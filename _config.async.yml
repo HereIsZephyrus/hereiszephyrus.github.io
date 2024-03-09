@@ -1,0 +1,92 @@
+theme:
+  switch: true
+  default: auto
+
+user:
+  name: ChanningTong
+  first_name: Channing
+  last_name: Tong
+  email: ChanningTong@gmail.com
+  domain: https://www.channingtong.cn
+  avatar: /img/avatar.jpg
+  describe: CUGer. Major in GI Science. To become a geographer proficient in CS, rather than a coder who knows geography.
+  ruleText: 
+
+top_bars:
+  - title: home
+    url: /
+
+  - title: blogs
+    url: /blogs/
+    noswup: true
+
+  - title: research
+    url: /research/
+    noswup: true
+
+  - title: projects
+    url: /projects/
+    noswup: true
+
+  - title: about
+    url: /about/
+    noswup: true
+
+  - title: links
+    url: /links/
+    noswup: true
+
+sidebar:
+  social:
+    - name: github
+      icon: fab fa-github
+      url: https://github.com/HereIsZephyrus
+#  typedTextPrefix: I`m
+#  typedText: ["Web Developer"]
+#  info: # 个人信息
+#    - key: 地址
+#      val: 火星
+#    - key: 年龄
+#      val: 18
+
+footer:
+  powered:
+    enable: true
+  beian:
+    enable: false
+    icp:
+  copyrightYear: 2024
+  custom_text:
+
+toc:
+  enable: true
+  list_number: true
+  post_title: true
+  max_depth: 8
+  min_depth: 1
+
+lazyload:
+  enable: true
+
+archive:
+  type: less # more || less
+
+creative_commons:
+  license: by-nc-sa
+  language: deed.zh
+  post: true
+  clipboard: true
+
+cover:
+  default: /img/block.jpg
+  type: img
+
+post_pagination:
+  enable: true
+  type: small
+
+links:
+  - name: AUGPath
+    url: https://shzaiz.github.io
+    image: //www.imalun.com/images/avatar.jpg
+    desc: raise the bar
