@@ -25,7 +25,7 @@ jobs:
         id: NotionSync
         uses: HereIsZephyrus/notion2markdown-action@latest
         with:
-          notion_secret: ${{ secrets.NOTION_SECRET }}
+          notion_secret: ${{ secrets.NOTION_TOKEN }}
           database_id: ${{ secrets.NOTION_DATABASE_ID }}
           pic_migrate: true
           pic_bed_config: ${{ secrets.PICBED_CONFIG }}
