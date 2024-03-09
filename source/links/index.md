@@ -1,4 +1,4 @@
 ---
-title: 友情链接
-layout: links
+title: 友人帐
+type: "link"
 ---
