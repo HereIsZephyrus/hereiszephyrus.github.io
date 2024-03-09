@@ -5,8 +5,8 @@ categories:
 tags:
   - 比赛记
   - life
-updated: 2024-03-09T12:34:00+00:00
-date: 2024-04-25T00:00:00+00:00
+updated: 2024-03-09T12:41:00+00:00
+date: 2023-04-25T00:00:00+00:00
 title: 2023mathorcup记
 id: a9105fc0-4d69-47b4-b843-df514a8ffe18
 ---
