@@ -6,6 +6,7 @@ tags:
   - lecture
   - GIS
 title: 数字地形测量学课程复习
+single_column: true
 ---
 # 测量学作业整理
 

@@ -7,6 +7,7 @@ tags:
   - GIS
 title: 地图学课程笔记
 draft : true
+single_column: true
 ---
 # 绪论
 > 杨乃,15072312496,个人网站https://geovislab.cug.edu.cn
