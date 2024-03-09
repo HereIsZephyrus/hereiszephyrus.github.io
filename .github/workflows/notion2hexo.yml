@@ -23,7 +23,7 @@ jobs:
           echo -e "Latest notion sync datetime:\n$NOTION_SYNC_DATETIME"
       - name: Convert notion to markdown
         id: NotionSync
-        uses: HereIsZephyrus/notion2markdown-action@latest
+        uses: Dorad/notion2markdown-action@v1
         with:
           notion_secret: ${{ secrets.NOTION_TOKEN }}
           database_id: ${{ secrets.NOTION_DATABASE_ID }}
