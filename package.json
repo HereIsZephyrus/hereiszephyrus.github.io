@@ -12,6 +12,7 @@
     "version": "7.1.1"
   },
   "dependencies": {
+    "@neilsustc/markdown-it-katex": "^1.0.0",
     "hexo": "^7.0.0",
     "hexo-abbrlink": "^2.2.1",
     "hexo-deployer-git": "^4.0.0",
@@ -21,10 +22,12 @@
     "hexo-generator-index-pin-top": "^0.2.2",
     "hexo-generator-search": "^2.4.3",
     "hexo-generator-tag": "^2.0.0",
-    "hexo-math": "^4.0.0",
     "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-kramed": "^0.1.4",
     "hexo-renderer-less": "^4.0.0",
     "hexo-renderer-markdown-it": "^7.1.1",
+    "hexo-renderer-mathjax": "^0.6.0",
+    "hexo-renderer-pandoc": "^0.4.0",
     "hexo-renderer-pug": "^3.0.0",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",

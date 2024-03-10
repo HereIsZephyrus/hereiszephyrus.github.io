@@ -6,6 +6,7 @@ tags:
   - GIS
 title: 遥感图像解译课程笔记
 draft: true
+mathjax: true
 description: 遥感图像解译课程笔记(更新中)
 abbrlink: c4cd6350
 date: 2024-02-26 00:00:00
