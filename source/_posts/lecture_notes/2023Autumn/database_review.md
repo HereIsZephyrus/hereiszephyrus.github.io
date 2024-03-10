@@ -8,6 +8,7 @@ tags:
 title: 数据库与空间数据库复习提纲
 single_column: true
 description : 数据库与空间数据库的复习提纲,一些概念性的内容
+mathjax: true
 ---
 # 数据库系统概述
 ## 数据库组成

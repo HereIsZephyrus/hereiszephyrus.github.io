@@ -117,8 +117,8 @@ to find the parttern, trend, process and relation of Geo-data.
 **加权平均中心**
 $$
 \begin{cases}
-\bar{X} = \frac{\sum_{i=1}^n w_i x_i}{\sum_{i=1}^n w_i}\\
-\bar{Y} = \frac{\sum_{i=1}^n w_i y_i}{\sum_{i=1}^n w_i}
+\bar{X} &= \frac{\sum_{i=1}^n w_i x_i}{\sum_{i=1}^n w_i}\\
+\bar{Y} &= \frac{\sum_{i=1}^n w_i y_i}{\sum_{i=1}^n w_i}
 \end{cases}
 $$
 **最小距离中心(中值中心)**

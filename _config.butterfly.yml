@@ -9,16 +9,18 @@ nav:
 
 # Menu 目錄
 menu:
-   Home: / || fas fa-home
-   Blog: /blogs/ || fas fa-book
+  Home: / || fas fa-home
+  Article: /article/ || fa-light fa-pen-fancy
+  Project: /project/ || fa-regular fa-cube
+  Research : /research/ || fas fa-book
   # Archives: /archives/ || fas fa-archive
   # Tags: /tags/ || fas fa-tags
   # Categories: /categories/ || fas fa-folder-open
   # List||fas fa-list:
   #   Music: /music/ || fas fa-music
   #   Movie: /movies/ || fas fa-video
-   Link: /links/ || fas fa-link
-   About: /about/ || fas fa-heart
+  Link: /link/ || fas fa-link
+  About: /about/ || fas fa-heart
 
 # Code Blocks (代碼相關)
 # --------------------------------------
@@ -222,7 +224,7 @@ aside:
   hide: false
   button: true
   mobile: true # display on mobile
-  position: right # left or right
+  position: left # left or right
   display:
     archive: true
     tag: true
@@ -345,13 +347,13 @@ rightside_item_order:
 
 # MathJax
 mathjax:
-  enable: false
+  enable: true
   per_page: false
 
 # KaTeX
 katex:
-  enable: false
-  per_page: false
+  enable: true
+  per_page: true
   hide_scrollbar: true
 
 # search (搜索)
@@ -366,7 +368,7 @@ algolia_search:
 
 # Local search
 local_search:
-  enable: false
+  enable: true
   # Preload the search data when the page loads.
   preload: false
   # Show top n results per article, show all results by setting to -1
