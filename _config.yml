@@ -39,7 +39,7 @@ source_dir: source
 public_dir: public
 tag_dir: tags
 archive_dir: archives
-category_dir: blogs
+category_dir: article
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
@@ -54,7 +54,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 syntax_highlighter: highlight.js

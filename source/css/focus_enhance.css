@@ -1,0 +1,34 @@
+/* 文章卡片选中显示摘要*/
+#recent-posts>.recent-post-item:hover .recent-post-info .content {
+    opacity: 1;
+    line-height: 2;
+    transition: all .3s;
+}
+
+#recent-posts>.recent-post-item>.recent-post-info>.content {
+    opacity: 0;
+    line-height: .7;
+    transition: all .3s;
+}
+
+#recent-posts>.recent-post-item .post_cover img.post_bg {
+    border-radius: 30px;
+    padding: 15px
+}
+
+#recent-posts>.recent-post-item:hover img.post_bg {
+    -webkit-transform: scale(.9);
+    -moz-transform: scale(.9);
+    -o-transform: scale(.9);
+    -ms-transform: scale(.9);
+    transform: scale(.9);
+}
+
+/* 选中 */
+#aside-content .card-archives ul.card-archive-list>.card-archive-list-item a:hover,
+.site-data>a:hover,
+#aside-content .card-categories ul.card-category-list>.card-category-list-item a:hover {
+    border-radius: 9px;
+    color: var(--card-bg);
+    background-color: var(--text-bg-hover);
+}
