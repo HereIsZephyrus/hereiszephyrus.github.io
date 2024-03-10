@@ -1,16 +1,17 @@
 ---
-created: 2024-03-09T12:00:00+00:00
 categories:
   - Blog
-description: 将zotero,margin note3,notion无缝缝合的文献阅读工作流,支持一键导出为PDF或beamer
+description: '将zotero,margin note3,notion无缝缝合的文献阅读工作流,支持一键导出为PDF或beamer'
 tags:
   - Notion
   - Workflow
   - Zotero
-updated: 2024-03-10T02:04:00+00:00
-date: 2023-12-24T00:00:00+00:00
 title: Margin zotero——文献工作流分享
 id: ee1aea86-e4ed-4ff0-b900-297c05175910
+abbrlink: 7356b54a
+created: 2024-03-09 12:00:00
+updated: 2024-03-10 02:04:00
+date: 2023-12-24 00:00:00
 ---
 
 ## 前言

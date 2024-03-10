@@ -1,13 +1,14 @@
 ---
-date: 2024-02-26
 categories:
   - LectureNote
 tags:
   - lecture
   - GIS
 title: 遥感图像解译课程笔记
-draft : true
-description : 遥感图像解译课程笔记(更新中)
+draft: true
+description: 遥感图像解译课程笔记(更新中)
+abbrlink: c4cd6350
+date: 2024-02-26 00:00:00
 ---
 # 绪论
 > 谢清华副教授,雷达遥感,透视测绘,植被参数和林下地形反演.

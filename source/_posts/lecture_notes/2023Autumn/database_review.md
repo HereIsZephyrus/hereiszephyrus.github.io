@@ -1,5 +1,4 @@
 ---
-date: 2023-12-16
 categories:
   - LectureNote
 tags:
@@ -7,8 +6,10 @@ tags:
   - CS
 title: 数据库与空间数据库复习提纲
 single_column: true
-description : 数据库与空间数据库的复习提纲,一些概念性的内容
+description: '数据库与空间数据库的复习提纲,一些概念性的内容'
 mathjax: true
+abbrlink: c1c035b9
+date: 2023-12-16 00:00:00
 ---
 # 数据库系统概述
 ## 数据库组成

@@ -1,15 +1,16 @@
 ---
-date: 2024-02-28
 categories:
   - LectureNote
 tags:
   - lecture
   - GIS
 title: 地图学课程笔记
-draft : true
+draft: true
 single_column: true
-description : 地图学课程笔记(更新中)
+description: 地图学课程笔记(更新中)
 mathjax: true
+abbrlink: e64e5cac
+date: 2024-02-28 00:00:00
 ---
 # 绪论
 > 杨乃,15072312496,个人网站https://geovislab.cug.edu.cn

@@ -1,14 +1,15 @@
 ---
-created: 2024-03-09T12:33:00+00:00
 categories:
   - Life
 description: 2023CUMCM记
 tags:
   - 比赛记
-updated: 2024-03-10T02:03:00+00:00
-date: 2023-09-15T00:00:00+00:00
 title: 2023CUMCM记
 id: 3351246b-d475-47db-a444-46659358a77a
+abbrlink: 9f1790dc
+created: 2024-03-09 12:33:00
+updated: 2024-03-10 02:03:00
+date: 2023-09-15 00:00:00
 ---
 
 国赛结束 li，撒花 ✿✿ ヽ(°▽°)ノ ✿
