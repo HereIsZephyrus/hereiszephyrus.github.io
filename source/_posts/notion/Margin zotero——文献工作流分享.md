@@ -8,7 +8,7 @@ tags:
   - Notion
   - Workflow
   - Zotero
-updated: 2024-03-10T07:00:00+00:00
+updated: 2024-03-10T07:04:00+00:00
 date: 2023-12-24T00:00:00+00:00
 title: Margin zotero——文献工作流分享
 id: ee1aea86-e4ed-4ff0-b900-297c05175910
