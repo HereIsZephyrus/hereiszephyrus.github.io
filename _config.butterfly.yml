@@ -229,6 +229,9 @@ aside:
     archive: true
     tag: true
     category: true
+  card_announcement:
+    enable: false
+    content: 
   card_author:
     enable: true
     description:
