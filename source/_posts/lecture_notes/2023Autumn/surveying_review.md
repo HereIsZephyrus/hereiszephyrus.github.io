@@ -7,6 +7,7 @@ tags:
   - GIS
 title: 数字地形测量学课程复习
 single_column: true
+description : 数字地形测量学复习时的一些资料整理,这课真学不会一点
 ---
 # 测量学作业整理
 

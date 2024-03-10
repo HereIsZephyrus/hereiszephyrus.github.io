@@ -7,6 +7,7 @@ tags:
   - GIS
 title: 空间统计与分析课程笔记
 draft : true
+description : 空间统计与分析课程笔记(更新中)
 ---
 # 绪论
 空间分析两条技术路径
