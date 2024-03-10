@@ -36,6 +36,12 @@ jobs:
           metas_keeped: abbrlink
           metas_excluded: pstatus,ptype
           last_sync_datetime: ${{ steps.GetNotionSyncDatetime.outputs.NOTION_SYNC_DATETIME }}
+      - name: add pandoc support
+        run: |
+          wget https://github.com/jgm/pandoc/releases/download/2.10.1/pandoc-2.10.1-1-amd64.deb
+          sudo dpkg -i pandoc-2.10.1-1-amd64.deb
+          npm install hexo-renderer-pandoc --save  # for mathjax
+          npm install
       - name: Hexo deploy
         if: steps.NotionSync.outputs.updated_count != '0'
         run: |
