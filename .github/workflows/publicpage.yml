@@ -14,7 +14,6 @@ jobs:
           wget https://github.com/jgm/pandoc/releases/download/2.10.1/pandoc-2.10.1-1-amd64.deb
           sudo dpkg -i pandoc-2.10.1-1-amd64.deb
           npm install hexo-renderer-pandoc --save  # for mathjax
-          npm install markdown-it-expandable
           npm install markdown-it-imsize
           npm install markdown-it-checkbox
           npm install
