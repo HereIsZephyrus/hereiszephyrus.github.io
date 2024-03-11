@@ -5,7 +5,6 @@ tags:
   - lecture
   - GIS
 title: WebGIS与二次开发课程笔记
-draft: true
 mathjax: true
 description: WebGIS与二次开发课程笔记(更新中)
 abbrlink: bb50ed80
