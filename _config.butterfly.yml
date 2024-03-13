@@ -3,16 +3,18 @@
 # --------------------------------------
 
 nav:
-  logo: # image
+  logo: https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/station_logo.png
   display_title: true
   fixed: false # fixed navigation bar
 
 # Menu 目錄
 menu:
   Home: / || fas fa-home
-  #Article: /article/ || fa-light fa-pen-fancy
-  #Project: /project/ || fa-regular fa-cube
-  #Research : /research/ || fas fa-book
+  Article || fa-regular fa-pen-nib:
+    Archives: /archives/ || fas fa-archive
+    Categories: /categories/ || fas fa-folder-open
+  Project: /project/ || fa-regular fa-cube
+  Research : /research/ || fas fa-book
   # Archives: /archives/ || fas fa-archive
   # Tags: /tags/ || fas fa-tags
   # Categories: /categories/ || fas fa-folder-open
@@ -959,6 +961,7 @@ inject:
     - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/static-butterfly/dist/css/index.min.css">
     #- <link rel="stylesheet" href="/css/focus_enhance.css">
     - <link rel="stylesheet" href="/css/toc_enhance.css">
+    - <link rel="stylesheet" href="/css/decoration.css">
     - <link rel="stylesheet" href="/css/background_opacity.css">
   bottom:
     # - <script src="xxxx"></script>
@@ -1049,7 +1052,7 @@ categoryBar:
   enable_page: / # 应用页面
   layout: # 挂载容器类型
     type: id
-    name: recent_post
+    name: category-wrap
     index: 0
   column: odd # odd：3列 | even：4列
   row: 1 #显示行数，默认两行，超过行数切换为滚动显示
@@ -1067,3 +1070,7 @@ categoryBar:
     - descr: 杂谈教程
       cover: https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp
   custom_css: https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css
+
+
+# hexo-filter-gitcalendar
+# see https://akilar.top/posts/1f9c68c9/

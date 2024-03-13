@@ -181,6 +181,7 @@ $$
 标准误是样本统计量偏离总体参数的程度.标准误越大,越难拒绝零假设.
 ## 空间推断统计
 ### 点模式分析
+> How to measure and test if spatial patterns are clustered or dispersed.
 #### 检验过程
 待检验的分布模式
 - 点呈现聚集分布
@@ -206,4 +207,98 @@ $$
 | -- | -- | -- |
 | VMR=0 | VMR=1(泊松分布,K-S检验) | VMR>>1(卡方检验) |
 
-2. 基于点对之间的关系-- 最近领分析Nearest neighbor
+2. 基于点对之间的关系-- 最近邻分析Nearest neighbor
+
+3. 基于距离的检验方法Nearest-Neighbor Index(NNI)
+$NNI$描述的事每个点到其他点的平均距离
+
+$$
+NNI = \frac{\text{Observed Average Distance}}{\text{Expected Average Distance}}
+$$
+
+$$
+NNI = \frac{\bar{d}}{E(\bar{d})}
+$$
+where $\bar{d}=\frac{\sum_{i=1}^n d_i}{n}$,$E(\bar{d}) = 0.5 \cdot \sqrt{\frac{A}{n}}$ .$A$为研究区面积.
+
+- For random pattern: NNI = 1
+- For clustered pattern: NNI = 0
+- For dispersed pattern: NNI = 2.149
+
+可以发现$NNI$指数与$A$的选取是相关联的.对$A$不同的选取会产生完全不同的结果,从而我们采取下列方法对$NNI$的计算进行修正: 
+
+1. 检查空间中是否相对的存在聚集效应
+$$
+G(d) = \frac{\#(d_{\min}(S_i)<d)}{n}
+$$
+where,$S_i$代表第$i$个点,$n$为总点数.
+
+2. 检查空间中总体上分布是否相对均匀(是否去中心的)
+
+$$
+F(d) = \frac{\#[d_{\min}(\mathbf{p}_i,S)<d]}{m}
+$$
+where,$\mathbf{p}_i$表示选取的第$i$个中心,$m$表示中心点数量.
+
+> 一阶效应和二阶效应
+> **一阶效应是指一个变量对结果的直接影响,关注的是单个变量对结果的直接影响**.它表示变量的单位变化对结果的变化量,通常用斜率来表示一阶效应.如果一阶效应为正,表示变量的增加与结果的增加正相关;如果一阶效应为负,表示变量的增加与结果的减少负相关.
+> **二阶效应是指一个变量对结果的间接影响,关注的是多个变量之间的相互作用对结果的影响**.它表示变量的变化与其他变量之间的交互作用,二阶效应通常用曲率或交互项来表示.二阶效应描述的是变量之间的相互影响,即当两个或更多的变量同时变化时,它们之间的关系如何影响结果.
+
+考察$G$和$F$在各个距离的斜率就可以知道点在不同距离的分布.
+
+3. 检查聚类的直径和聚类之间的距离Ripley K(d)
+
+$$
+K(d) = \frac{\sum_{i=1}^n \#[S \in C(\mathbf{s}_i,d)]}{n \lambda}
+$$
+
+K(d)函数的问题: 
+- Dependent on study area boundary(边界效应)
+- Affected by circle radii selected(步长和起始距离)
+- Each point has unit value -- no magnitude or quantity(无法构造更复杂的线性函数)
+
+### 空间自相关
+**How to define spatial autocorrelation?**
+
+#### 1. Base on Tober's Law(the first law of geography)
+
+> Everything is related to everything, but near things are more related than distant things.
+
+So spatial autocorrelation is a **degree of relative similarity**.
+
+we call `lag-x` or `wx` replacing of  `y` in the scatter of spatial autocorrelation.
+
+two patterns : Positive spatial autocorrelation; Negative spatial autocorelation.
+
+#### 2. Base on Similarity
+
+> The degree to which characteristics at one location are similar(or dissimilar) to those nearby.
+
+`Similarity` is a futher description of spatial autocorrelation than Tober first law of geography.
+
+#### 3. Based on Probability
+
+> Measure of the extent to which the occurence of an event in one geographic unit makes more probable, or less probable, the occurence of a similar event in a neighboring unit.
+
+If this attribute shows a spatial autocorrelation, it creates a **"field"**.
+
+The concept of clustered, random or dispersed is the spatial autocorrelation of location itself!
+
+get further...
+
+#### 4. Using correlation
+
+> The correlation between an ovservation's value on a variable and the value of near-by observations on the same variable.
+
+*Correlation = "Similarity", "association", or "relationship".*
+
+**Why are standard statistical tests wrong?**The assumption of independence failed.
+
+**If spatial autocorrelation exists: **
+1. Correlation coefficients bigger than they really are.
+2. More likely to appear "statistically significant".
+
+### Measuring Spatial Autocorrelation
+> to solve the problem of measuring "nearness" or "proximity" by computer science.
+
+Row-standardized geographic contiguity matrices
