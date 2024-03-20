@@ -292,9 +292,9 @@ get further...
 
 *Correlation = "Similarity", "association", or "relationship".*
 
-**Why are standard statistical tests wrong?**The assumption of independence failed.
+**Why are standard statistical tests wrong?** The assumption of independence failed.
 
-**If spatial autocorrelation exists: **
+**If spatial autocorrelation exists:**
 1. Correlation coefficients bigger than they really are.
 2. More likely to appear "statistically significant".
 
@@ -302,3 +302,46 @@ get further...
 > to solve the problem of measuring "nearness" or "proximity" by computer science.
 
 Row-standardized geographic contiguity matrices
+
+## Global Measures of Spatial autocorrelation
+
+### Global Measures and Local Measures
+
+- Global Measures: A single value which applies to the entire data set.
+- Local Measures: A value calculated for each observation unit
+
+### How to measure
+#### Join Count Statistic
+- Polygons only
+- biary data only
+- Based on examining polygons which share a border
+
+Test Statistic given by: 
+$$
+Z = \frac{\text{observed} - \text{expected}}{\text{SD of expected}}
+$$
+
+Expected: 
+$$
+\begin{cases}
+    E(J_{BB}) &= k \cdot p_B^2 \\
+    E(J_{WW}) &= k \cdot p_W^2 \\
+    E(J_{BW}) &= 2k \cdot p_Bp_W \\
+\end{cases}
+$$
+
+#### Moran's I
+> THe most common measure of Spatial Autocorrelation.
+
+
+#### Geary's C
+
+#### Grtis-ord G
+
+### Local Indicators of Spatial Association(LISA
+> Moran's I is most commonly userd, and the local version is often called Anselin's LISA, or just LISA.
+
+What are we doing?
+- The statistic is calculated for each areal unit in the data.
+- For each polygon, the index is calculated based on neighboring polygons with whihch it shares bordens.
+- Since a measure is avaliab;e for eavh polyen, these can be mapped to indicate how spatial autocoreelation varies over the study regon.

@@ -1,9 +1,4 @@
-
-
-const msDay = 86400000;
-const msFirstDay = 1553385600000;
-let counter = 0;
-
+const today = new Date();
 function isLeapYear(year) {
     if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {return true;}
     return false;
@@ -19,8 +14,6 @@ function getMonthDays(month, year) {
     console.error('Invalid month');
 }
 //print calendar base image
-const today = new Date();
-
 const weekName = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const weekLen = weekName.length;
 const start_week = (today.getDay() + 1) % weekLen;
@@ -30,7 +23,7 @@ const weekNum = 50;
 const monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const start_month = today.getMonth();
 let monthArr = [];
-let monthGaplen = [0];
+let monthGaplen = [];
 var count_preday = today.getDate();
 var now_month = start_month;
 while (count_preday < weekNum * weekLen) {
@@ -40,12 +33,13 @@ while (count_preday < weekNum * weekLen) {
     monthArr.push(monthName[now_month]);
     now_month = (now_month - 1 + 12)%12;
     count_preday += getMonthDays(now_month+1, now_year);
-    console.log(now_month);
+    //console.log(now_month);
 }
 if ( parseInt(count_preday / weekLen) + 1 < weekNum) {
     monthGaplen.push(weekNum);
     monthArr.push(monthName[now_month]);
 }
+monthGaplen.push(weekNum)
 //monthArr = monthArr.reverse();
 //console.log(monthArr);
 
@@ -54,7 +48,8 @@ monthArr.forEach(function(month, index) {
     let spanItem = document.createElement('span');
     spanItem.className = 'grid-head__cell';
     spanItem.textContent = month;
-    spanItem.style.gridColumn = `${weekNum-monthGaplen[index]} / ${Math.max(weekNum-monthGaplen[index+1],1)}`;
+    spanItem.style.gridColumn = `${weekNum-monthGaplen[index+1]+1} / ${weekNum-monthGaplen[index]}`;
+    //console.log(`${weekNum-monthGaplen[index]}`);
     spanItem.style.gridRow = '1 / 1';
     monthArrContainer.appendChild(spanItem);
 });
@@ -75,32 +70,61 @@ for (let num = 0; num < weekNum; num++) {
     }
 }
 
-//get github contributions info from GitHub REST API
 const getDateString = (cnt) => {
-	const date = new Date(msFirstDay + msDay * cnt);
-	return `${monthArr[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+	var date = new Date();
+    date.setDate(today.getDate() - cnt);
+    //console.log(date);
+	return `${monthName[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
 }
 
-const getContributionsObj = (cnt, isCommits) => {
+//get github contributions info from GitHub REST API
+
+function get_GitHub_contributions(user_name) {
+    const api_url = `https://github.com/users/${user_name}/contributions`
+    const axios = require('axios');
+    const cheerio = require('cheerio');
+    let count = []
+    axios.get(api_url)
+      .then((response) => {
+        const htmlString = response.data;
+        const $ = cheerio.load(htmlString);
+        const table = $('tbody'); // 选择表格元素
+        const rows = table.find('tr'); // 获取所有行
+        rows.each((index, row) => {
+            const columns = $(row).find('tooltip'); 
+            columns.each((index, column) => {
+                count.add($(column).text())
+                console.log($(column).text());
+            });
+        })
+      .catch((error) => {
+            console.error('Error retrieving HTML:', error);
+      });
+    });
+}
+const contributionInfo = get_GitHub_contributions('HereIsZephyrus');
+
+const getContributionsObj = (cnt) => {
 	const min = 1;
 	const max = 12;
-	const rand = isCommits ? Math.floor(Math.random() * (+max - +min) + +min) : 0;
+	const rand =  Math.floor(Math.random() * (+max - +min) + +min);
 	
 	return {
 		rand,
-		str: isCommits ? `${rand} contribution${rand > 1 ? 's' : ''}` : 'No contributions'
+		str: `${rand} contribution${rand > 1 ? 's' : 'No contributions'}` 
 	};
 }
 
 const gridCell = document.querySelectorAll('.grid__cell');
+let counter = 0;
 const drawSpace = () => {
     for (let num = 0; num < weekNum; num++){
         for (let week = 0; week < weekLen; week++) {
-            date = getDateString(counter);
-            commit = getContributionsObj(counter, false);
+            dateStr = getDateString(weekNum * weekLen - counter);
+            commit = getContributionsObj(weekNum * weekLen - counter);
             gridCell[counter].setAttribute('data-commit', commit.str);
-            gridCell[counter].setAttribute('data-date', date);
-            counter++;
+            gridCell[counter].setAttribute('data-date', dateStr);
+            counter ++;
         }
     }
 }

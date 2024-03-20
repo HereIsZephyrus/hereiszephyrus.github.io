@@ -56,6 +56,7 @@ body{background-color: #fff}
   grid-gap: 3px;
   grid-template-columns: repeat(50, 1fr);
   grid-template-rows: 12px;
+  justify-items: end;
 }
 .grid-head__cell {
   font-size: 12px;
