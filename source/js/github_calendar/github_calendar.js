@@ -88,8 +88,8 @@ function get_GitHub_contributions(user_name) {
       .then((response) => {
         const htmlString = response.data;
         const $ = cheerio.load(htmlString);
-        const table = $('tbody'); // 选择表格元素
-        const rows = table.find('tr'); // 获取所有行
+        const table = $('tbody');
+        const rows = table.find('tr');
         rows.each((index, row) => {
             const columns = $(row).find('tooltip'); 
             columns.each((index, column) => {

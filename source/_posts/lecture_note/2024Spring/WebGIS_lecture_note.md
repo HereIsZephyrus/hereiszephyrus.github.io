@@ -102,3 +102,59 @@ XMLHTTPRequest对象是客户端应用请求与服务器沟通的桥梁,通过�
 | 解析更快 | 更安全|
 
 ### HTML简介
+
+以及JS,jQuerry,Ajax...实操,略
+
+## WebGIS技术原理
+### 参考椭球体与坐标系
+略,详见GIS原理.
+#### 坐标系概述
+`GCJ-02坐标系`是火星坐标系,是国家测绘局于2002年发布的坐标系,是在WGS84基础上加密而成的.**高德,腾讯,谷歌(中国大陆板块)**等使用.
+`BD-09坐标系`是百度坐标系,该坐标系在GCJ-02基础上再次加密,供百度地图使用.
+
+`地图投影`是指建立地球椭球面上的经/纬线网和平面上的经/纬线网对应关系的方法.
+Web墨卡托投影在整个世界范围内,以迟到为标准纬线,以本初子午线为中央经线,以两者的交点为坐标系原点,向东,向北为正,向西,向南为负.
+EPSG发布了一个坐标参照系的数据集,并维护坐标参照系统的数据集参数.
+https://epsg.io
+
+```我国常用坐标参照系数据集
+4326: WGS84
+3857: Web墨卡托
+4490: CGCS2000
+4549: CGCS2000投影坐标系
+4214: 54北京
+4610: 80西安
+```
+
+Proj4js库可用于坐标系转换.
+
+`屏幕坐标系`以左上角为坐标系原点,沿x轴向右为正值,沿y轴向下为正值.
+
+### 1.基于SVG的地图渲染
+SVG(Scalable Vector Graphics)用来定义用于网络中基于矢量的图形.SVG使用XML格式定义图形(类似XHTML).
+SVG的基本图形包括: rect, circle, ellipse, line, polyline, polygen, path.
+> 2008年SVG Tiny 1.2成为W3C的推荐标准
+
+**优点**
+- 强大的动态交互
+- 完全支持DOM
+- 比PNG和JEPG等格式的文件小很多
+
+### Canvas地图渲染
+Canvas是HTML5的一个新特性,其本身是一个HTML元素,所以需要HTML元素配合高度和宽度属性来定义一块可绘制的区域,定义区域之后使用JavaScript的脚本绘制图形的HTML元素.
+Canvas可以绘制基本的图形,并渲染地图,制作照片,绘制动画,处理和渲染视频等.
+例子: 
+```HTML
+<canvas id = "canvas" width = "200" height = "100" style = "border: 1px soolid #0000">
+</canvas>
+```
+```JS
+function draw(event){
+    let c = document.getElementByID("ex_canvas");
+    let ctx = c.getContest("2d");//"2d"(二维绘图上下文), "webgl"(WebGL 三维绘图上下文)
+    ctx.fillStyle = "#FF0000";
+    ctx.fillRect(0,0,150,75);
+}
+window.onload = draw;
+```
+一个[live exercise](www.runoob.com/w3note/html-5-canvas-intro.html).
