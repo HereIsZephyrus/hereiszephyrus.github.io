@@ -71,12 +71,17 @@ weekArr.forEach(function(day) {
 });
 
 const block = document.getElementById('calendar_grid');
-for (let num = 0; num < weekNum; num++) {
+for (let num = 0; num < weekNum-1; num++) {
     for (let week = 0; week < weekLen; week++) {
         let listItem = document.createElement('li');
         listItem.className = 'grid__cell';
         block.appendChild(listItem);
     }
+}
+for (let num = 0; num < today.getDate() - latestSat.getDate(); num++) {
+    let listItem = document.createElement('li');
+        listItem.className = 'grid__cell';
+        block.appendChild(listItem);
 }
 
 const getDateString = (cnt) => {
@@ -88,7 +93,7 @@ const getDateString = (cnt) => {
 
 //get github contributions info from GitHub REST API
 
-function get_GitHub_contributions_API(user_name, weekLen) {
+function get_GitHub_contributions(user_name, weekLen) {
     return new Promise((resolve, reject) => {
         const url = `https://gh-calendar.rschristian.dev/user/${user_name}`;
         fetch(url)
@@ -104,52 +109,47 @@ function get_GitHub_contributions_API(user_name, weekLen) {
             });
     });
 }
-function get_GitHub_contributions(){
-    //let res;
-    get_GitHub_contributions_API('HereIsZephyrus', weekNum)
-        .then(contributions => {
-            console.log(contributions);
-            return contributions;
-        })
-        .catch(error => {
-            console.error(error);
-        });
-    //return res;
-}
-const contributionInfo = get_GitHub_contributions();
-console.log(contributionInfo);
-const gridCell = document.querySelectorAll('.grid__cell');
-let counter = 0;
-const drawSpace = () => {
-    ongoingWeek = [].push(contributionInfo[0]);
-    console.log(ongoingWeek);
-    ongoingWeek.forEach(day => {
-        gridCell[counter].setAttribute('data-commit', day["count"]);
-        gridCell[counter].setAttribute('data-date', day["date"]);
-        gridCell[counter].classList.add(`grid__cell_color_${ongodayingWeek["intensity"]}`);
-        counter ++;
-    });
-    for (let week = 0; week<ongoingWeek.length; week++){
-        gridCell[counter].setAttribute('data-commit', ongoingWeek["count"]);
-        gridCell[counter].setAttribute('data-date', ongoingWeek["date"]);
-        gridCell[counter].classList.add(`grid__cell_color_${ongoingWeek["intensity"]}`);
-        //console.log(gridCell[counter].intensity);
-        counter ++;
+async function fetchData() {
+    const promise = get_GitHub_contributions('HereIsZephyrus', weekNum);
+    try {
+      const result = await promise; // 等待 Promise 解析并获取结果
+      //console.log(result);
+      return result;
+    } catch (error) {
+      console.error(error);
     }
-    for (let num = 0; num < weekNum; num++){
-        currentWeek = contributionInfo[num+1];
-        console.log(currentWeek);
-        currentWeek.forEach(day => {
-            gridCell[counter].setAttribute('data-commit', day["count"]);
+}
+
+const gridCell = document.querySelectorAll('.grid__cell');
+window.onload = async function drawCalendarSpace(){
+    const contributionInfo = await fetchData();
+    console.log(contributionInfo);
+    let counter = 0;
+    const drawSpace = () => {
+        ongoingWeek = contributionInfo[0];
+        console.log(ongoingWeek);
+        
+        for (let num = weekNum-1; num >=1; num--){
+            currentWeek = contributionInfo[num];
+            console.log(currentWeek);
+            currentWeek.reverse().forEach(day => {
+                commitStr =  day["count"] ? `${day["count"]} contributions` : `no contribution`;
+                gridCell[counter].setAttribute('data-commit', commitStr);
+                gridCell[counter].setAttribute('data-date', day["date"]);
+                gridCell[counter].classList.add(`grid__cell_color_${day["intensity"]}`);
+                counter ++;
+            })
+        }
+        ongoingWeek.reverse().forEach(day => {
+            commitStr =  day["count"] ? `${day["count"]} contributions` : `no contribution`;
+            gridCell[counter].setAttribute('data-commit', commitStr);
             gridCell[counter].setAttribute('data-date', day["date"]);
             gridCell[counter].classList.add(`grid__cell_color_${day["intensity"]}`);
             counter ++;
-        })
+        });
     }
+    drawSpace();
 }
-
-drawSpace();
-
 
 //add mouse listener to each cell
 let timer = null;
