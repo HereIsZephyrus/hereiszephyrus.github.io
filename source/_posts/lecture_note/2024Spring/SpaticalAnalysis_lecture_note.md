@@ -338,10 +338,59 @@ $$
 
 #### Grtis-ord G
 
-### Local Indicators of Spatial Association(LISA
+### Local Indicators of Spatial Association(LISA)
 > Moran's I is most commonly userd, and the local version is often called Anselin's LISA, or just LISA.
 
 What are we doing?
 - The statistic is calculated for each areal unit in the data.
 - For each polygon, the index is calculated based on neighboring polygons with whihch it shares bordens.
 - Since a measure is avaliab;e for eavh polyen, these can be mapped to indicate how spatial autocoreelation varies over the study regon.
+
+## Spatial Regression
+What is spatial regression doing?
+
+To figure out the spatial relation bwteen bivariate or multivarivate.
+
+**clearfication**: 
+- univariate: All measures so far have focused on one variable at a time
+- bivariate: Often we are interested in the association or relationship between two vaiables.
+- multivariate: Or more than two variables.
+
+**Correlation and Regression**
+> Mathematically, they are identical.
+
+Correlation means relationship or association but no direction or causation is implied.
+
+Regression means implies but doesn't prove, trying to make out independent variable how predict dependent variable.
+
+### Simple Linear regression
+Concerned with predicting one varable from another variable.
+
+$$
+Y = a + bX + \epsilon
+$$
+
+a - interpret
+b - X correlation coeffcient
+
+Ordinary Least Squares(OLS)
+
+**Always look at your data. Don't just rely on the statistics.**
+
+### Fix SA
+...
+
+### Spatial regression
+#### 1. Spatial Autoregressive Models
+**Spatial lag model**
+$$
+Y = \beta_0 + \lambda WY + X \beta + \epsilon
+$$
+$W$ is the spatial weights matrix. Consider lag-x as the second independent variable.
+
+**Spatial error model**
+$$
+Y = \beta_0  + X \beta + \rho W \epsilon + \xi
+$$
+
+$W$ is the spatial weights matrix. $\xi$ is "white noise".

@@ -965,7 +965,7 @@ inject:
     - <link rel="stylesheet" href="/css/github/github_calendar.css">
   bottom:
     - <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
-    # - <script src="/js/github_calendar/github_calendar_api.js"></script>
+    - <script src="/js/github/github_calendar.js"></script>
     # - <script src="xxxx"></script>
 
 # CDN

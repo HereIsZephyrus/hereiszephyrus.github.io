@@ -1,9 +1,18 @@
+function getLatestSaturdayDate(count_base_day) {
+    const currentDay = count_base_day.getDay(); 
+    const daysOffset = (currentDay + 1)%7;
+    const latestSaturday = new Date();
+    latestSaturday.setDate(count_base_day.getDate() - daysOffset);
+  
+    return latestSaturday;
+  }
 const today = new Date();
+const latestSat = getLatestSaturdayDate(today);
+
 function isLeapYear(year) {
     if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {return true;}
     return false;
 }
-
 function getMonthDays(month, year) {
     const longMonth = [1,3,5,7,8,10,12];
     const shortMonth = [4,6,9,11];
@@ -13,21 +22,23 @@ function getMonthDays(month, year) {
     console.log(month);
     console.error('Invalid month');
 }
+
 //print calendar base image
 const weekName = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const weekLen = weekName.length;
-const start_week = (today.getDay() + 1) % weekLen;
-const weekArr = weekName.slice(start_week, weekName.length).concat(weekName.slice(0, start_week));
+const start_week = (latestSat.getDay() + 1) % weekLen;
+//const weekArr = weekName.slice(start_week, weekName.length).concat(weekName.slice(0, start_week));
+const weekArr = weekName;
 
-const weekNum = 50;
+const weekNum = 49;
 const monthName = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const start_month = today.getMonth();
+const start_month = latestSat.getMonth();
 let monthArr = [];
 let monthGaplen = [];
-var count_preday = today.getDate();
+var count_preday = latestSat.getDate();
 var now_month = start_month;
 while (count_preday < weekNum * weekLen) {
-    const now_year = today.getFullYear() - (now_month > start_month);
+    const now_year = latestSat.getFullYear() - (now_month > start_month);
     let colnum = parseInt(count_preday / weekLen) + 1;
     monthGaplen.push(colnum);
     monthArr.push(monthName[now_month]);
@@ -40,8 +51,6 @@ if ( parseInt(count_preday / weekLen) + 1 < weekNum) {
     monthArr.push(monthName[now_month]);
 }
 monthGaplen.push(weekNum)
-//monthArr = monthArr.reverse();
-//console.log(monthArr);
 
 const monthArrContainer = document.getElementById('months');
 monthArr.forEach(function(month, index) {
@@ -72,60 +81,70 @@ for (let num = 0; num < weekNum; num++) {
 
 const getDateString = (cnt) => {
 	var date = new Date();
-    date.setDate(today.getDate() - cnt);
+    date.setDate(latestSat.getDate() - cnt);
     //console.log(date);
 	return `${monthName[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
 }
 
 //get github contributions info from GitHub REST API
 
-function get_GitHub_contributions(user_name) {
-    const api_url = `https://github.com/users/${user_name}/contributions`
-    const axios = require('axios');
-    const cheerio = require('cheerio');
-    let count = []
-    axios.get(api_url)
-      .then((response) => {
-        const htmlString = response.data;
-        const $ = cheerio.load(htmlString);
-        const table = $('tbody');
-        const rows = table.find('tr');
-        rows.each((index, row) => {
-            const columns = $(row).find('tooltip'); 
-            columns.each((index, column) => {
-                count.add($(column).text())
-                console.log($(column).text());
+function get_GitHub_contributions_API(user_name, weekLen) {
+    return new Promise((resolve, reject) => {
+        const url = `https://gh-calendar.rschristian.dev/user/${user_name}`;
+        fetch(url)
+            .then(response => response.json())
+            .then(jsonData => {
+                const contributionList = jsonData.contributions;
+                const lastWeekContributions = contributionList.slice(contributionList.length - (weekLen + 1)).reverse();
+                resolve(lastWeekContributions);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                reject(error);
             });
-        })
-      .catch((error) => {
-            console.error('Error retrieving HTML:', error);
-      });
     });
 }
-const contributionInfo = get_GitHub_contributions('HereIsZephyrus');
-
-const getContributionsObj = (cnt) => {
-	const min = 1;
-	const max = 12;
-	const rand =  Math.floor(Math.random() * (+max - +min) + +min);
-	
-	return {
-		rand,
-		str: `${rand} contribution${rand > 1 ? 's' : 'No contributions'}` 
-	};
+function get_GitHub_contributions(){
+    let res;
+    get_GitHub_contributions_API('HereIsZephyrus', weekNum)
+        .then(contributions => {
+            console.log(contributions);
+            res = contributions;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    return res;
 }
-
+const contributionInfo = get_GitHub_contributions();
+console.log(contributionInfo);
 const gridCell = document.querySelectorAll('.grid__cell');
 let counter = 0;
 const drawSpace = () => {
+    ongoingWeek = [].push(contributionInfo[0]);
+    console.log(ongoingWeek);
+    ongoingWeek.forEach(day => {
+        gridCell[counter].setAttribute('data-commit', day["count"]);
+        gridCell[counter].setAttribute('data-date', day["date"]);
+        gridCell[counter].classList.add(`grid__cell_color_${ongodayingWeek["intensity"]}`);
+        counter ++;
+    });
+    for (let week = 0; week<ongoingWeek.length; week++){
+        gridCell[counter].setAttribute('data-commit', ongoingWeek["count"]);
+        gridCell[counter].setAttribute('data-date', ongoingWeek["date"]);
+        gridCell[counter].classList.add(`grid__cell_color_${ongoingWeek["intensity"]}`);
+        //console.log(gridCell[counter].intensity);
+        counter ++;
+    }
     for (let num = 0; num < weekNum; num++){
-        for (let week = 0; week < weekLen; week++) {
-            dateStr = getDateString(weekNum * weekLen - counter);
-            commit = getContributionsObj(weekNum * weekLen - counter);
-            gridCell[counter].setAttribute('data-commit', commit.str);
-            gridCell[counter].setAttribute('data-date', dateStr);
+        currentWeek = contributionInfo[num+1];
+        console.log(currentWeek);
+        currentWeek.forEach(day => {
+            gridCell[counter].setAttribute('data-commit', day["count"]);
+            gridCell[counter].setAttribute('data-date', day["date"]);
+            gridCell[counter].classList.add(`grid__cell_color_${day["intensity"]}`);
             counter ++;
-        }
+        })
     }
 }
 
