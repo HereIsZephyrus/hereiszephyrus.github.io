@@ -105,16 +105,16 @@ function get_GitHub_contributions_API(user_name, weekLen) {
     });
 }
 function get_GitHub_contributions(){
-    let res;
+    //let res;
     get_GitHub_contributions_API('HereIsZephyrus', weekNum)
         .then(contributions => {
             console.log(contributions);
-            res = contributions;
+            return contributions;
         })
         .catch(error => {
             console.error(error);
         });
-    return res;
+    //return res;
 }
 const contributionInfo = get_GitHub_contributions();
 console.log(contributionInfo);

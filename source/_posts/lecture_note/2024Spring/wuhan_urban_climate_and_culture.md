@@ -8,7 +8,7 @@ title: 武汉山水与城市文明课程笔记
 draft: true
 description: 武汉山水与城市文明(更新中)
 mathjax: true
-abbrlink: e64e5cac
+abbrlink: e5e1bba1
 date: 2024-02-28 00:00:00
 ---
 # 武汉山水与城市文明

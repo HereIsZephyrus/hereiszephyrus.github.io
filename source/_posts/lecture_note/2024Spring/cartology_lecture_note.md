@@ -5,7 +5,6 @@ tags:
   - lecture
   - GIS
 title: 地图学课程笔记
-draft: true
 description: 地图学课程笔记(更新中)
 mathjax: true
 abbrlink: e64e5cac

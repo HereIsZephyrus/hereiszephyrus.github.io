@@ -7,7 +7,7 @@ tags:
 title: 空间统计与分析课程笔记
 mathjax: true
 description: 空间统计与分析课程笔记(更新中)
-abbrlink: 4cd094aa
+abbrlink: 4cd094ab
 date: 2024-02-26 00:00:00
 ---
 # 绪论
