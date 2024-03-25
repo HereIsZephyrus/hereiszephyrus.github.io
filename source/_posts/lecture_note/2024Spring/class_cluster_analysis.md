@@ -37,7 +37,7 @@ X(i) = X_0(i),
 Y(i) = 
 \begin{cases}
     Y_0(i) &, 1 \leq Y_0(i) \leq 3 \\
-    Y_0(i)+1 &, 54\leq Y_0(i) \leq 8 \\
+    Y_0(i)+1 &, 4\leq Y_0(i) \leq 8 \\
     Y_0(i)+2 &, 9 \leq Y_0(i) \leq 11 \\
 \end{cases}
 $$
