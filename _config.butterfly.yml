@@ -42,6 +42,7 @@ social:
    fas fa-envelope: mailto:channingtong@gmail.com || Email || '#4a7dbe'
    fa-brands fa-qq : https://tool.gljlw.com/qq/?qq=473066198 || QQ || '#4a7dbe'
    fa-brands fa-bilibili : https://space.bilibili.com/62288208 || Bilibili || '#4a7dbe'
+   fa-solid fa-rss: https://blog.channingtong.com/atom.xml || RSS || '#4a7dbe'
 
 # Image (圖片設置)
 # --------------------------------------
@@ -1074,5 +1075,4 @@ categoryBar:
   custom_css: https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css
 
 
-# hexo-filter-gitcalendar
-# see https://akilar.top/posts/1f9c68c9/
+rss: /atom.xml
