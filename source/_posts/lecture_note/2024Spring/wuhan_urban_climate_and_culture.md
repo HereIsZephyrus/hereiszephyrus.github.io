@@ -137,4 +137,79 @@ date: 2024-02-28 00:00:00
 #### 长江武汉段下段的演化
 下游与上游同理,都是沙洲不断靠岸形成的,而下游段沙洲之间空隙更大,从而形成了更多更大的湖.
 ![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/the_evolution_of_north_jianghanplain.png)
+
 ### 汉江河流特征与演化
+#### 关于汉口 -- 地理与城市意义
+汉口本质汉水汇入长江的河口,但随着汉水河口的固定(明成化年间是汉水最后一次河道摆动),汉口地区的繁荣,汉口成为一个城市空间概念.早期的汉口是地区概念,反之汉水入江口南北两岸,因此最早的汉口镇在南岸汉阳一侧.明末随着汉水河口北岸的兴起,汉口镇仅指北岸,喊变为尘世的含义.1900年独建`夏口厅`.
+
+汉口因汉水名称变化而有多个名称,因此古文献汇总出现了不同时期汉口游移,同一时期有多个汉口并存.
+
+> 不同时期汉口变化说明汗水入江口是变化的.同期汉口并存表明汗水可能是分汊入江的.
+
+#### 明代中期之前的汉江河道 -- 多河道并存
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/qing_han_river_enterance.png)
+
+#### 汉江主泓河道演变 -- 自北向南迁移
+三国时期魏吴边界在当今汉江以北,推测当时的汉江主河道在当今之北.
+
+当今汉江左岸几乎没有山而右岸(南岸)有大量的山,李长安教授推测汉水是从北面推扫过来的.现在的汉江被南岸大量的山和矶头挡住南迁困难.
+
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/lower_han_river_delta.png)
+
+> 现在终于知道什么是水淹七军威震华夏了.
+
+### "成化之变"及其影响
+#### "成化之变"之争
+#### "成化之变"实质: 河流重组
+成化之变不是河流改道,而是**裁弯取直引发的河流重组,多流归一**.
+
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/ming_han_river_entrance.png)
+
+汉阳曾经确实是在汉水北侧,如图所示,如今主河道很可能是裁弯取直之后的结果,在圈下的水系萎缩,而在裁弯取直前在此处入江.
+
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/han_river_evidence_of_geology.png)
+
+一目了然的地质地貌证据. 并通过打钻证实沉积物是河道成绩.
+#### "成化之变"影响: 汉口崛起
+龟北汉江支流成为汉江河口,规模增大,成为良好的港口.随着长江中沙洲并岸,武昌新河红关码头火灾,汉口便成为长江武汉段最佳的港口.
+
+汉口河口段的多流归一,使得汉江船运可以直达汉口,**汉口取代了汉川刘家隔的地位**.
+
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/geolofy_foundation_of_han_river.png)
+
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/soil_of_wuhan.png)
+
+## 武汉的湖泊
+### 湖泊概况
+武汉市面积大于$0.1km^2$的湖泊是**166个**.中心城区40个,新城区126个.湖泊面积约占水域面积40%.
+#### 武汉湖泊特征
+- 湖岸线很长,树形.
+- 湖泊分布在岗地上.
+- 面积排名: 洪湖,娘子湖,斧头湖.
+
+### 武汉湖泊成因
+武汉的湖泊属于**河成湖**类型.
+- **河间洼地湖**: 主要分布在洪泛平原区.
+
+呈片状主要分布在长江,汉江和府河之间的低地,现在已经基本消失殆尽.
+- **河道遗迹湖**: 主要分布在洪泛平原区内以及平原区后缘,分*废弃河道湖*和*沙洲夹湖*(一边是岗地一边是平原).
+
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/sha_zhou_jia_hu.png)
+
+- **河道溃口湖**: 主要分布在河道两侧.就是河道溃口后形成的
+- **沟谷壅塞湖**: 主要分布在波状岗地区.湖岸取车,湖汊极为发育,主要分布于波状岗地区,是分布最广的类型.
+
+#### 沟谷壅塞湖特征
+**形态**总体多为树枝状,支汊众多,湖岸线曲折,湖岸线发育系数K一般大于6.
+**水深**较深,多为2~4m.
+#### 沟谷壅塞湖产生
+形成于末次冰期依赖,是在**气候-海平线变化**控制下**河流侵蚀,壅塞作用**英法的河湖关系变化的结果.
+
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/202403311625510.png)
+
+#### 东湖和沙湖的形成比较
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/evolution_of_wuhan_east_lake.png)
+
+无论是从地质上还是从沉积物来说,长江都不会经过东湖.沙湖是长江没有完全靠岸形成的而东湖是冲沟湖盆形成的.
+
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/202403311634179.png)

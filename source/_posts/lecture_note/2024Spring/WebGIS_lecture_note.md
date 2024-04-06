@@ -157,4 +157,4 @@ function draw(event){
 }
 window.onload = draw;
 ```
-一个[live exercise](www.runoob.com/w3note/html-5-canvas-intro.html).
+一个[live exercise](www.runoob.com/w3note/html5-canvas-intro.html).

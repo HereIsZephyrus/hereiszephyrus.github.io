@@ -343,8 +343,8 @@ $$
 
 What are we doing?
 - The statistic is calculated for each areal unit in the data.
-- For each polygon, the index is calculated based on neighboring polygons with whihch it shares bordens.
-- Since a measure is avaliab;e for eavh polyen, these can be mapped to indicate how spatial autocoreelation varies over the study regon.
+- For each polygon, the index is calculated based on neighboring polygons with which it shares bordens.
+- Since a measure is avaliable for every polyen, these can be mapped to indicate how spatial autocoreelation varies over the study regon.
 
 ## Spatial Regression
 What is spatial regression doing?
@@ -394,3 +394,7 @@ Y = \beta_0  + X \beta + \rho W \epsilon + \xi
 $$
 
 $W$ is the spatial weights matrix. $\xi$ is "white noise".
+
+## 空间插值
+> 注意,很多数据的**采样是点数据**,本质是**场数据**,常常**绑定在面属性**上.
+
