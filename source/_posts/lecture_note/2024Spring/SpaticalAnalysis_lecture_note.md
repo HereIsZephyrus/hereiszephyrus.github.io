@@ -6,7 +6,7 @@ tags:
   - GIS
 title: 空间统计与分析课程笔记
 mathjax: true
-description: 空间统计与分析课程笔记(更新中)
+description: 空间统计与分析课程笔记
 abbrlink: 4cd094ab
 date: 2024-02-26 00:00:00
 ---

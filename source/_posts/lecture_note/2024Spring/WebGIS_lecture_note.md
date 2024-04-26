@@ -6,7 +6,7 @@ tags:
   - GIS
 title: WebGIS与二次开发课程笔记
 mathjax: true
-description: WebGIS与二次开发课程笔记(更新中)
+description: WebGIS与二次开发课程笔记
 abbrlink: bb50ed80
 date: 2024-02-26 00:00:00
 ---
@@ -63,7 +63,7 @@ to communicate between a server and a client, ESRI,2016
 > 地理信息科学的长处是空间分析而非信息获取.
 
 `WebGIS从自上而下的信息流向转为信息的双向流动`.从本地到云端,从封闭的WebGIS网站到基于Web服务的架构,从有限的桌面平台到无线的移动平台.
-WebGIS布景提供功能,更提供**数据内容**.从静态数据到实时数据,时空大数据和实时GIS.
+WebGIS不仅提供功能,更提供**数据内容**.从静态数据到实时数据,时空大数据和实时GIS.
 
 ## Web技术简介
 ### Ajax简介
