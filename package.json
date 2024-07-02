@@ -18,7 +18,7 @@
     "cheerio": "^1.0.0-rc.12",
     "d3": "^7.9.0",
     "graphql": "^16.8.1",
-    "hexo": "^7.0.0",
+    "hexo": "^7.3.0",
     "hexo-abbrlink": "^2.2.1",
     "hexo-asset-link": "^2.2.3",
     "hexo-butterfly-categories-card": "^1.0.0",
