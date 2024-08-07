@@ -2,14 +2,17 @@
 categories:
   - Blog
 tags:
-  - lecture
-  - Geosciences
+  - RS
+  - notes
 title: 地温重建方法笔记
 draft: true
 description: 一些基本的单通道方法的推导
 mathjax: true
 ---
 # 地温重建方法笔记
+
+> 后来看到一篇博客写的很好,分享一下: https://www.cnblogs.com/enviidl/p/16285384.html
+
 ## 构建地温计算方程
 单通道 (single-channel)方法是一种被广泛使用的用于从遥感数据重建地表温度的方法,其核心是根据热辐射收支平衡原构建的辐射传输方程和则计算地表热辐射强度.
 
