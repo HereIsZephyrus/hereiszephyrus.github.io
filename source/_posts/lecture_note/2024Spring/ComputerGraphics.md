@@ -4,9 +4,9 @@ categories:
 tags:
   - lecture
   - GIS
-title: 计算机图形学笔记
+title: 计算机图形学绪论
 mathjax: true
-description: 计算机图形学笔记(更新中)
+description: 计算机图形学绪论
 ---
 > 计算机图形学: 21131801
 > 林伟华 22384148@qq.com

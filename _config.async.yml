@@ -8,7 +8,7 @@ user:
   last_name: Tong
   email: ChanningTong@gmail.com
   domain: https://www.channingtong.cn
-  avatar: /img/avatar.jpg
+  avatar: https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/Zephyrus_avatar.JPG
   describe: CUGer. Major in GI Science. To become a geographer proficient in CS, rather than a coder who knows geography.
   ruleText: 
 
@@ -88,5 +88,5 @@ post_pagination:
 links:
   - name: AUGPath
     url: https://shzaiz.github.io
-    image: //www.imalun.com/images/avatar.jpg
+    image: https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/AUGPath_avatar.jpg
     desc: raise the bar

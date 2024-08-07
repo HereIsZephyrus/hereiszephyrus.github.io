@@ -6,7 +6,7 @@ tags:
   - GIS
 title: WebGIS与二次开发课程笔记
 mathjax: true
-description: WebGIS与二次开发课程笔记
+description: WebGIS与二次开发课程笔记(弃坑)
 abbrlink: bb50ed80
 date: 2024-02-26 00:00:00
 ---
