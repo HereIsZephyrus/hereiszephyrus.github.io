@@ -7,8 +7,11 @@ tags:
 title: 地理加权回归模型学习笔记
 mathjax: true
 description: 一些关于basic GWR的介绍,推导和部分衍生模型的介绍
+date: 2024-06-10 00:00:00
 ---
+
 > 节选自GIS算法课程作业，具体(引用)详见PDF
+
 # 地理加权回归模型基本原理
 
 地理加权回归模型 (geographically weighted regression, GWR)是一种局部回归模型，其基本形式为:

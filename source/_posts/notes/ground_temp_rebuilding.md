@@ -5,9 +5,9 @@ tags:
   - RS
   - notes
 title: 地温重建方法笔记
-draft: true
 description: 一些基本的单通道方法的推导
 mathjax: true
+date: 2024-06-01 00:00:00
 ---
 # 地温重建方法笔记
 
