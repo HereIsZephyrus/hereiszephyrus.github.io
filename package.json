@@ -15,7 +15,7 @@
     "@neilsustc/markdown-it-katex": "^1.0.0",
     "axios": "^1.7.7",
     "body-parser": "^1.20.2",
-    "cheerio": "^1.0.0-rc.12",
+    "cheerio": "^1.0.0",
     "d3": "^7.9.0",
     "graphql": "^16.8.1",
     "hexo": "^7.3.0",
