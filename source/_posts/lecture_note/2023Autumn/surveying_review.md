@@ -221,7 +221,14 @@ date: 2023-12-09 00:00:00
 
        :three:根据起始边的坐标方位角以及改正后角推算其他各导线边的坐标方位角
 
-       :four:计算坐标增量$\left\{ \begin{align}\Delta x_{ij} &=S_{ij} \cdot \cos \alpha _{ij}\\\Delta y_{ij} &=S_{ij} \cdot \sin \alpha _{ij}\end{align}\right.\Rightarrow$闭合差$\left\{ \begin{align} f_x&=\Sigma\Delta x_{ij}\\f_y&=\Sigma\Delta y_{ij}\end{align}\right.\Rightarrow$改正数$\left\{ \begin{align} V_{\Delta x_{ij}}&=\frac{-f_x}{\Sigma S_{ij}}\cdot S_{ij}\\ V_{\Delta y_{ij}}&=\frac{-f_y}{\Sigma S_{ij}}\cdot S_{ij}\end{align}\right.$
+       :four:计算坐标增量
+       $$\left\{ \begin{align}\Delta x_{ij} &=S_{ij} \cdot \cos \alpha _{ij}\\\Delta y_{ij} &=S_{ij} \cdot \sin \alpha _{ij}\end{align}\right.\Rightarrow$$
+       闭合差
+       $$
+       \left\{ \begin{align} f_x&=\Sigma\Delta x_{ij}\\f_y&=\Sigma\Delta y_{ij}\end{align}\right.\Rightarrow$$
+       改正数
+       $$\left\{ \begin{align} V_{\Delta x_{ij}}&=\frac{-f_x}{\Sigma S_{ij}}\cdot S_{ij}\\ V_{\Delta y_{ij}}&=\frac{-f_y}{\Sigma S_{ij}}\cdot S_{ij}\end{align}\right.
+       $$
 
        :five:逐点计算各未知点的坐标
 
