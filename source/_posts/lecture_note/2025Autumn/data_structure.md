@@ -1,15 +1,3 @@
----
-categories:
-  - LectureNote
-tags:
-  - lecture
-  - CS
-title: 数据结构课程笔记
-mathjax: true
-description: 数据结构课程笔记(更新中)
-date: 2024-09-03 00:00:00
----
-
 > 张咏珊, yszhang@cug.edu.cn. 中国地质大学(武汉)计算机学院
 
 # 绪论
