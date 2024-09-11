@@ -50,8 +50,7 @@ date: 2024-09-02 00:00:00
 4. **分类器设计**通过训练确定判定规则,使按此类别规则分类时,错误率最低.把这些判决建成标准库.
 5. **分类决策**在特征空间中对被识别对象进行分类.
 
-# 模式识别任务
-## 特征抽取
+## 模式识别任务-特征抽取
 ### 形状特征
 任何物体的形状特征可由其`几何特征`,`统计属性`和`拓扑属性`来描述.
 可供选择的几何特征: 周长,面积,偏心率,欧拉数,角点,横轴长度和纵轴长度等.
@@ -71,7 +70,7 @@ SAM 的核心思想是将光谱数据视为高维空间中的向量，并通过�
 对于待分类的光谱向量和参考光谱向量，计算它们之间的夹角。
 光谱角的定义为 (Kruse et al., 1993): 
 $$
-\theta(x,y) = \cos^{-1} (\frac{\sum_{i=1}^n x_iy_i}{\sqrt{||x||^2 \cdot ||y||^2}})
+\theta(x,y) = \cos^{-1} (\frac{\sum_{i=1}^n x_iy_i}{\sqrt{||x||^2 \cdot ||y||^2}}) \tag{1}
 $$
 其中: 
 $x$是参考光谱的光谱特征向量,$y$是训练区域的光谱特征向量,$n$为光谱数.
@@ -85,3 +84,88 @@ $$
 其中$C_k$是第$k$中土地覆盖,$y_k$是$k$类的光谱特征,$y_j$是$j$类的光谱特征.
 
 ![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/SAMexample.png)
+
+# Bayes决策
+评价决策有多重标准,对于同一个问题采用不同的标准会得到不同意义下"最优"的决策,Bayes决策是所有识别方法的一个基准(Benchmark).Bayes决策的两个常用准则是<u>最小错误率</u>和<u>最小风险(最小错误率的期望)</u>.
+
+## 基于最小错误率的Bayes决策
+即使得决策的错误率$P(e)$最小
+错误率与条件错误率$P(e \mid x)$: 
+
+$$
+P(e) = \int P(e,x)dx = \int P(e \mid x)p(x)dx = E(P(e \mid x)) \tag{2}
+$$
+
+### 二分类Bayes决策
+
+即在决策空间$\Omega = \{\omega_1,\omega_2\}$中选择后验概率$P(\omega_1 \mid x),P(\omega_2 \mid x)$中大的$\omega$作为决策,使得在观测值$x$下的条件错误率最小.
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/bayes_decision_prob1.png)
+$$
+D(x) = \arg \min_i P(\omega_i \mid x), i = 1,2
+$$
+
+从而可计算条件错误率:
+
+$$
+P(e \mid x) = 1 - \max_i P(\omega_i \mid x)
+$$
+
+由式(2)可计算对应的错误率$P(e)$
+
+从另一个角度看: 
+
+$$
+\begin{aligned}
+P(e) &= P(x \in \mathit{R_1},\omega_1) + P(X \in \mathit{R_2},\omega_1)\\
+ &= P(\omega_2)P_2(e) + P(\omega_1)P_1(e)
+\end{aligned}
+$$
+
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/bayes_prob_graph.png)
+
+Bayes最小错误率决策不仅保证了错误率最小,而且保证每个观测值下的条件错误最小,**Bayes决策是一致最优决策**.
+
+### 多分类问题最小决策
+1. 根据Bayes公式计算$P(\omega_i \mid x)$和先验的样本分布$P(\omega_i)$后验概率$P(\omega_i \mid x)$.
+
+2. 变换到对数域计算: 
+
+$$
+\ln (P(x \mid \omega_i)P(\omega_i)) = \ln(P(x \mid \omega_i)) + \ln(P(\omega_i))
+$$
+
+注意到Bayes公式中$P(\omega_i \mid x) = \frac{P(x \mid \omega_i)P(\omega_i)}{P(x)}$中分母$P(x)$在做Bayes决策时可看做定值,不需要考虑.然后和前二分类一样比大小.
+
+## 基于最小风险的Bayes决策
+即使得**决策带来的损失的平均值(风险)最小**.
+
+`损失`做出决策$D(x)= \omega_i$但实际$x \in \omega_j$的损失: 
+
+$$
+\lambda_{i,j} = \lambda(D(x) = \omega_i \mid \omega_j)
+$$
+
+表示为$(\lambda_{i,j})_{N \times N}$
+
+`条件风险` 获得观测值$x$后某一特定决策在给定条件下的期望损失.条件风险对观测值$x$的期望为`风险`.
+
+$$
+R(D(x)) = E(R(D(x) \mid x)) = \int R(D(x)\mid x)P(x)dx
+$$
+
+在给定损失矩阵$\lambda_{i,j}$后算出每个决策的条件风险.决策判别为: 
+
+$$
+\begin{aligned}
+\hat{D}(x) &= \arg \min_D R(D(x)\mid x) \\
+&= \arg \min_D (1-P(\omega_i \mid x)) = \arg \max_D P(\omega_i \mid x)
+\end{aligned}
+$$
+与基于最小错误率的决策变量是一致的.
+
+> 基于最小错误率的Bayes决策也可以看做最小风险Bayes决策的一种特殊情形,只需要定义损失$\lambda_{i,j} = 1 - \delta(i,j)$,其中$\delta(i,j) \in \{0,1\}$为判别向量.
+
+## 正态分布的最小错误率Bayes决策
+在做Bayes决策时需要指定一个先验的类条件概率密度.这个概率密度选择需要考虑模型合理性和计算复杂度,正态分布是常用选择: 中心极限定律保证合理性,并且计算分析较简单.
+
+# 概率密度估计
