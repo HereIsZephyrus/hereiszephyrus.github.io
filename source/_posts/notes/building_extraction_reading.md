@@ -7,12 +7,13 @@ tags:
 title: DSM建筑物提取算法比较文献阅读
 mathjax: true
 description: Comparing Three Machine Learning Techniques for Building Extraction from a Digital Surface Model
-date: 2024-06-10 00:00:00
+date: 2024-10-7 00:00:00
 ---
 
 > 遥感应用模型课程要求做一些文献阅读,抽了一篇是建筑物提取的benchmark数据集上SVM,ELM和FCN三种算法的比较分析,~~为了完成作业~~做一些简单的整理和记录.
 
 ![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/RS_reading_title.png)
+
 # 研究内容
 本文旨在比较三种流行的监督机器学习模型(SVM,ELM,FCN)在仅使用高分辨率栅格数字表面模型(DSM)数据的建筑物提取任务上的性能,均使用像素级的目标检测策略,在ISPRS的"Test Project on Urban Classiﬁcation, 3-D Building Reconstruction, and Semantic Labeling"项目提供的benchmark上进行测试.
 
@@ -301,4 +302,18 @@ FCN就做到了这件事.解决方式异常简单: 将CNN网络中的最后一�
 即 TSSCD 模型是一个一维全卷积网络,该模型采用卷积运算来提取每个时间点不同光谱波段之间的相关特征,从而学习它们与土地覆盖的映射,进而实现端到端的土地覆被变化检测和分类.
 
 具体细节可阅读原文献.该方法在中国各区域的城市都展现了非常好的精度,并展现出非常好的迁移能力.
+
 ![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/TSSCD_transfer_learning.png)
+
+# 参考资料
+- Chen, T.-L., Chiu, H.-W., & Lin, Y.-F. (2020). How do east and southeast asian cities differ from western cities? A systematic review of the urban form characteristics. Sustainability, 12(6), 2423. https://doi.org/10.3390/su12062423
+- Dalal, N., & Triggs, B. (2005). Histograms of oriented gradients for human detection. 2005 IEEE Computer Society Conference on Computer Vision and Pattern Recognition (CVPR’05), 1, 886–893. https://doi.org/10.1109/CVPR.2005.177
+- Guang-Bin Huang, Qin-Yu Zhu, & Chee-Kheong Siew. (2004). Extreme learning machine: A new learning scheme of feedforward neural networks. 2004 IEEE International Joint Conference on Neural Networks (IEEE Cat. No.04CH37541), 2, 985–990. https://doi.org/10.1109/IJCNN.2004.1380068
+- He, H., Yan, J., Liang, D., Sun, Z., Li, J., & Wang, L. (2024). Time-series land cover change detection using deep learning-based temporal semantic segmentation. Remote Sensing of Environment, 305, 114101. https://doi.org/10.1016/j.rse.2024.114101
+- Long, J., Shelhamer, E., & Darrell, T. (不详). Fully convolutional networks for semantic segmentation.
+- Notarangelo, N. M., Mazzariello, A., Albano, R., & Sole, A. (2021). Comparing three machine learning techniques for building extraction from a digital surface model. Applied Sciences, 11(13), 6072. https://doi.org/10.3390/app11136072
+- Rottensteiner, F., Sohn, G., Gerke, M., & Wegner, J. D. (不详). Working group III / 4—3D scene analysis.
+- https://www.cnblogs.com/sixuwuxian/p/16757254.html
+- https://medium.com/ai反斗城/反捲積-deconvolution-上採樣-unsampling-與上池化-unpooling-差異-feee4db49a00
+- https://www.zywvvd.com/notes/study/image-processing/feature-extraction/hog/hog/
+- https://www.cnblogs.com/gujiangtaoFuture/articles/12177870.html
