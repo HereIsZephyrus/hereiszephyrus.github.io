@@ -14,7 +14,7 @@ date: 2024-10-7 00:00:00
 
 ![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/RS_reading_title.png)
 
-# 研究内容
+# 文章内容
 本文旨在比较三种流行的监督机器学习模型(SVM,ELM,FCN)在仅使用高分辨率栅格数字表面模型(DSM)数据的建筑物提取任务上的性能,均使用像素级的目标检测策略,在ISPRS的"Test Project on Urban Classiﬁcation, 3-D Building Reconstruction, and Semantic Labeling"项目提供的benchmark上进行测试.
 
     benchmark 指的是一种测试标准.用于评估系统,硬件或软件的性能.通过运行一系列预定义的任务,可以比较不同系统之间的性能差异.
@@ -295,7 +295,7 @@ FCN就做到了这件事.解决方式异常简单: 将CNN网络中的最后一�
 本文是学长做的研究,之前看过就打算一起聊一下.
 ![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/TSSCD_workflow.png)
 
-假设在城市发展的后期阶段,为了满足更复杂的遥感时间序列解释需求需要弥合像元变化和语义变化之间的“语义鸿沟”,这里的像元变化利用卫星光学遥感影像提取,语义变化特征表示为逐时相的土地覆盖类型变化.因此,本文的思路是使用FCN对单一像元长时序的特征进行学习.
+在城市发展的后期阶段,为了满足更复杂的遥感时间序列解释需求,需要弥合像元变化和语义变化之间的“语义鸿沟”.这里的像元变化利用卫星光学遥感影像提取,语义变化特征表示为逐时相的土地覆盖类型变化.因此,本文的思路是使用FCN对单一像元长时序的特征进行学习.
 
 ![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/TSSD_network.png)
 
