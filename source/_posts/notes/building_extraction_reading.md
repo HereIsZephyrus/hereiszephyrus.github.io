@@ -12,6 +12,7 @@ date: 2024-06-10 00:00:00
 
 > 遥感应用模型课程要求做一些文献阅读,抽了一篇是建筑物提取的benchmark数据集上SVM,ELM和FCN三种算法的比较分析,~~为了完成作业~~做一些简单的整理和记录.
 
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/RS_reading_title.png)
 # 研究内容
 本文旨在比较三种流行的监督机器学习模型(SVM,ELM,FCN)在仅使用高分辨率栅格数字表面模型(DSM)数据的建筑物提取任务上的性能,均使用像素级的目标检测策略,在ISPRS的"Test Project on Urban Classiﬁcation, 3-D Building Reconstruction, and Semantic Labeling"项目提供的benchmark上进行测试.
 
@@ -24,12 +25,12 @@ date: 2024-06-10 00:00:00
 ### 数据预处理
 ![数据处理工作流](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/RS_flowchart_data.png)
 
-数据集是航空图像和激光扫描仪数据组成的集合,分别用于城市目标检测(urban object detection)和三维景观重建(3D building reconstruction).因此,本文使用的原始影像是航空真彩色影像.该数据集有包含三个城市区域: 
+数据集是航空图像和激光扫描仪数据组成的集合,分别用于城市目标检测(urban object detection)和三维景观重建(3D building reconstruction).本文使用的原始影像是基于此得到的DSM影像.该数据集有包含三个城市区域: 
 
 | 数据描述 | 数据源 | 数据描述 |
 | -- | -- | -- |
 | Vaihingen an der Enz | DGPF | 呈现出相对较小的中欧村庄的特征,有许多独立的建筑和小型的多层建筑,包含了略有不同的城市机理. |
-| Postsdam | DGPF | 代表了一个典型的中欧历史城市，建筑街区大,街道窄,聚落结构密集. |
+| Postsdam | DGPF | 代表了一个典型的中欧历史城市,建筑街区大,街道窄,聚落结构密集. |
 | Toronto | - | 展示了典型的现代北美大都市的特征,高低层建筑混合,包括投射出相当大阴影的高层建筑群.屋顶结构和街道的形状呈现不同程度的复杂性. |
 
 **由于本文使用的三种方法均需要监督分类,因此需要根据任务需要首先对影像进行标注**.即需要建立对影像建立二值分类: 建筑与非建筑. Vaihingen an der Enz和Postsdam两个区域的二值掩膜是从数据集提取的,而Toronto的数据集是直接从已有的矢量数据集得到.
@@ -234,9 +235,10 @@ $$
 进一步的细节请查阅CNN有关文章.
 
 ![卷积原理](https://animatedai.github.io/media/convolution-animation-3x3-kernel.gif)
-![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/VGG16network.png)
 
 > 我觉得上图对卷积运算的演示非常值得一提,要注意卷积操作在运算时是把一个局部的全部特征维同时输入一个卷积核,而一个卷积核在滑动完成后得到的是新图像的一个特征维,也就是有多少个卷积核新图像就有多少特征维度.
+
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/VGG16network.png)
 
 在这个思想上,AlexNet首先证明了其在图像学习上的强大威力,而VGG网络结构则是整理了AlexNet的思路,提供了一套"将卷积运算打包分类"的范式,而(本文的)FCN正是基于VGG16构建的.
 
@@ -252,6 +254,9 @@ FCN就做到了这件事.解决方式异常简单: 将CNN网络中的最后一�
 
 ![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/compare_padding.png)
 
+然而,在比如使用卷积将输入图像缩小到原尺寸的$\frac{1}{32}$的情景下,让转置卷积一次性上采样32倍(FCN-32S)实在太"为难"他了.因此FCN-16S和FCN-8S网络则使用中间过程进行融合从何缓解了上采样时倍率过大的问题,很好地提高了模型精度.
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/FCN_8S_network.png)
+具体的数学推导请查看相关资料.
 # 讨论
 ## 三个模型的性能评价
 
@@ -262,13 +267,38 @@ FCN就做到了这件事.解决方式异常简单: 将CNN网络中的最后一�
 - 在Potsdam测试集,SVM和ELM分类器在Sensitivity方面表现出相似的结果,FCN模型优于HOG-SVM模型;考虑MCC时,这种差异变得更大.
 - 在Toronto测试集,HOG-SVM和FCN模型的MCC值显著高于HOG-ELM模型,后者的Sensitivity和NPV较低.
 
-综合考虑,基于FCN的深度学习方法是最优方法,因为无论城市背景如何其都能实现良好的分类,F1 score、AUC和MCC的值都很接近理想值1.在考虑该文章给出的三种不同城市的背景下,这种方法相较于其他两种方法产生的结果更好,ELM和SVM模型则分别存在低估和高估建筑物像素的问题，影响了检测的准确性.
+综合考虑,基于FCN的深度学习方法是最优方法,因为无论城市背景如何其都能实现良好的分类,两种基于 HOG 的模型的性能都受到研究的城市环境的影响,性能的下降在 Vaihingen 地区表现尤为明显.在考虑该文章给出的三种不同城市的背景下,这种方法相较于其他两种方法产生的结果更好,ELM和SVM模型则分别存在低估和高估建筑物像素的问题，影响了检测的准确性.
 
 | 模型名称 | 模型评价|
 | -- | -- |
-| ELM | 倾向于低估建筑物像素导致较高的漏检率.在Vaihingen和Toronto区域,ELM的检测效果不佳,小型建筑和特定建筑类型(如庭院)的内部结构被误判. |
+| HOG-ELM | 倾向于低估建筑物像素导致较高的漏检率.在Vaihingen和Toronto区域,ELM的检测效果不佳,小型建筑和特定建筑类型(如庭院)的内部结构被误判. |
 | HOG-SVM | 在Toronto和Vaihingen的一些场景倾向于高估建筑物像素,表现为较高的误检率.尤其在Vaihingen区域由于误检率高导致预测的建筑物像素过多. |
-| HOG-FCN | 在所有测试子集中,FCN模型在预测建筑物的位置和大小上表现最佳,与真实地面数据的对应关系最为吻合,显示了更高的检测准确性.|
+| FCN | 在所有测试子集中,FCN模型在预测建筑物的位置和大小上表现最佳,与真实地面数据的对应关系最为吻合,显示了更高的检测准确性.|
 
+总之,本文的结论是非常直觉的,"The bigger, the better".值得注意的是,轮廓和边界的不准确是基于深度学习分割的一个缺点.同时,虽然本文选取了三个不同的城市区,但均集中在欧美地区,训练样本依然受限.
 ## 本文提出模型在我国建筑物提取任务中的潜力
-## FCN模型在更复杂建筑物提取中的应用潜力
+介绍一篇本文的引用,该文从城市建筑密度模式和土地利用混合模式两个角度比较了东西方城市形态的差异,为模型的迁移提供参考.
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/RS_further_title1.png)
+该文分析的研究区如下图所示,包含东亚和东南亚区域的典型城市.
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/city_study_area.png)
+
+其中提到土地混合利用中东方和西方城市的差异主要体现在东方国家城市土地以混合利用为主可分为水平,垂直和时序上的混合利用.其中以居住与就业的土地混合利用组合为典型.例如一般而言台北市包含56种土地利用类型和12个土地利用区,每个土地利用区允许10种以上类型.
+
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/Asian_city_land_patterns.png)
+
+个人感觉这对我们的启示是这对DSM的重建和建筑提取的一致性造成挑战,由更复杂的垂直结构和单个建筑及其相邻建筑形成的更复杂的纹理引起.
+
+## FCN模型在时序建筑物提取中的应用潜力
+从地理学的视角出发,FCN已经证明了其对建筑物的"模式"的提取能力,那么其对建筑物的"过程"的提取能力呢?
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/RS_further_title2.png)
+本文是学长做的研究,之前看过就打算一起聊一下.
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/TSSCD_workflow.png)
+
+假设在城市发展的后期阶段,为了满足更复杂的遥感时间序列解释需求需要弥合像元变化和语义变化之间的“语义鸿沟”,这里的像元变化利用卫星光学遥感影像提取,语义变化特征表示为逐时相的土地覆盖类型变化.因此,本文的思路是使用FCN对单一像元长时序的特征进行学习.
+
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/TSSD_network.png)
+
+即 TSSCD 模型是一个一维全卷积网络,该模型采用卷积运算来提取每个时间点不同光谱波段之间的相关特征,从而学习它们与土地覆盖的映射,进而实现端到端的土地覆被变化检测和分类.
+
+具体细节可阅读原文献.该方法在中国各区域的城市都展现了非常好的精度,并展现出非常好的迁移能力.
+![](https://cdn.jsdelivr.net/gh/HereIsZephyrus/zephyrus.img/images/blog/TSSCD_transfer_learning.png)
