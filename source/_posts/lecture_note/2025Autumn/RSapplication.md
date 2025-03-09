@@ -6,7 +6,7 @@ tags:
   - RS
 title: 遥感应用模型课程笔记
 mathjax: true
-description: 遥感应用模型课程笔记(更新中)
+description: 遥感应用模型课程笔记(弃坑)
 date: 2024-09-03 00:00:00
 ---
 
