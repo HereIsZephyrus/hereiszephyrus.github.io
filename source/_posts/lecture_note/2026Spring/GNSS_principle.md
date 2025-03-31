@@ -1,3 +1,14 @@
+---
+categories:
+  - LectureNote
+tags:
+  - lecture
+  - RS
+title: GNSS原理及其应用笔记
+mathjax: true
+description: GNSS原理及其应用课程笔记(更新中)
+date: 2025-3-17 00:00:00
+---
 # GNSS原理及其应用
 `GNSS三大作用` 定位(Positioning),导航(Navigation),授时(Timing)
 # Orientation: Development of GNSS Technologies
