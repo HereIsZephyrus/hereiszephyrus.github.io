@@ -7,6 +7,7 @@ tags:
 title: 高级空间建模课程绪论
 mathjax: true
 description: 高级空间与建模课程绪论
+abbrlink: 320f8032
 date: 2024-05-08 00:00:00
 ---
 

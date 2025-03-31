@@ -7,6 +7,7 @@ tags:
 title: 计算机图形学绪论
 mathjax: true
 description: 计算机图形学绪论
+abbrlink: d3e88ecd
 date: 2024-04-29 00:00:00
 ---
 > 计算机图形学: 21131801

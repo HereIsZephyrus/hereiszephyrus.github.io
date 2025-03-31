@@ -7,6 +7,7 @@ tags:
 title: 遥感应用模型课程笔记
 mathjax: true
 description: 遥感应用模型课程笔记(弃坑)
+abbrlink: d7ab1ac6
 date: 2024-09-03 00:00:00
 ---
 

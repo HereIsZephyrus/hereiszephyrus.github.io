@@ -6,7 +6,8 @@ tags:
   - GIS
 title: 地理加权回归模型学习笔记
 mathjax: true
-description: 一些关于basic GWR的介绍,推导和部分衍生模型的介绍
+description: '一些关于basic GWR的介绍,推导和部分衍生模型的介绍'
+abbrlink: f0bc21d6
 date: 2024-06-10 00:00:00
 ---
 

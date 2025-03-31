@@ -7,6 +7,7 @@ tags:
 title: 地温重建方法笔记
 description: 一些基本的单通道方法的推导
 mathjax: true
+abbrlink: 50bf7bf7
 date: 2024-06-01 00:00:00
 ---
 # 地温重建方法笔记

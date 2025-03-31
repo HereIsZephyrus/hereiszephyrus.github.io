@@ -6,8 +6,11 @@ tags:
   - RS
 title: DSM建筑物提取算法比较文献阅读
 mathjax: true
-description: Comparing Three Machine Learning Techniques for Building Extraction from a Digital Surface Model
-date: 2024-10-7 00:00:00
+description: >-
+  Comparing Three Machine Learning Techniques for Building Extraction from a
+  Digital Surface Model
+abbrlink: 515f3433
+date: 2024-10-07 00:00:00
 ---
 
 > 遥感应用模型课程要求做一些文献阅读,抽了一篇是建筑物提取的benchmark数据集上SVM,ELM和FCN三种算法的比较分析,~~为了完成作业~~做一些简单的整理和记录.

@@ -7,6 +7,7 @@ tags:
 title: 城市热岛热岛模式学习笔记
 mathjax: true
 description: 城市热岛热岛模式学习笔记
+abbrlink: 4ae834d5
 date: 2025-03-27 00:00:00
 ---
 # 构建城市热岛遥感同化模型使用的相关概念整理与辨析
