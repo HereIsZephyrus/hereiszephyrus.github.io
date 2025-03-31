@@ -61,8 +61,8 @@ date: 2024-10-07 00:00:00
 | PPV(Precision) | $\frac{TP}{TP+FP}$ | 在所有被预测为正的样本中实际为正的比例,评估预测为正的样本是否准确 |
 | NPV | $\frac{TN}{TN+FN}$ | 在所有被预测为负的样本中实际为负的比例,评估预测为负的样本是否准确 |
 | F1 score | $2\cdot\frac{PPV \times Recall}{PPV + Recall}$ | Precision和Recall的调和平均 |
-| MSE | $\frac{1}{N_{\text{pixels}}}(\text{imageref} - \text{imageout})^2$ | 预测值与实际值之差的平方的平均,衡量模型预测值与实际值的偏差 |
-| MCC | $\frac{TP\times TN - FP \times FN}{\sqrt{(TP+FP)(TP+FN)(TN+FP)(TN+FN)}}$ | 用于衡量二分类问题中模型性能的指标,在类别不平衡情况下是一个更可靠的衡量指标 |
+| MSE | $\frac{1}{N_{\text{pixels} } }(\text{imageref} - \text{imageout})^2$ | 预测值与实际值之差的平方的平均,衡量模型预测值与实际值的偏差 |
+| MCC | $\frac{TP\times TN - FP \times FN}{\sqrt{(TP+FP)(TP+FN)(TN+FP)(TN+FN)} }$ | 用于衡量二分类问题中模型性能的指标,在类别不平衡情况下是一个更可靠的衡量指标 |
 
 具体结果将在下文进一步讨论.
 
@@ -123,7 +123,7 @@ $$
 #### 在block中归一化梯度直方图
 对每个block中$9n^2$个向量使用L2范数归一化: 
 $$
-v = \frac{v}{\sqrt{||v||^2_2 + \epsilon^2}}
+v = \frac{v}{\sqrt{||v||^2_2 + \epsilon^2} }
 $$
 其中$\epsilon$是一个小的正则量.经验的,若以$2\times 2$为范围合并cell.
 归一化可以实现对边缘,光照和阴影等干扰的压缩,可以进一步提高泛化能力.

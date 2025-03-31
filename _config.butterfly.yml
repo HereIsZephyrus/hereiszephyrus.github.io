@@ -394,13 +394,14 @@ rightside_item_order:
 # MathJax
 mathjax:
   enable: true
-  per_page: false
+  per_page: true
 
 # KaTeX
 katex:
   enable: true
   per_page: true
-  hide_scrollbar: true
+  #hide_scrollbar: true
+  copy_tex: true
 
 # search (搜索)
 # see https://butterfly.js.org/posts/ceeb73f/#搜索系統

@@ -30,7 +30,7 @@ $$
 其中$L_{\lambda}^{atm \downarrow}$是大气中向下穿过的辐射值,$L_\lambda^{atm \uparrow}$是大气向上穿过的辐射值,$\varepsilon$为地表发射的辐射值,$T_s$为待求地表温度值.而$B(\lambda,T_s)$是温度为$T_s$的黑体辐射值,根据普朗克辐射定律当$\lambda$单位为 $\mu$m时:
 
 $$
-B(\lambda,T_s) = \frac{c_1 \lambda^{-5}}{\exp(\frac{c_2}{\lambda T_s}) - 1}
+B(\lambda,T_s) = \frac{c_1 \lambda^{-5} }{\exp(\frac{c_2}{\lambda T_s}) - 1}
 $$
 
 其中定标常数$c_1  = 1.19104 \times 10^8 (w \cdot \mu m^4 \cdot m^{-2} \cdot sr^{-1})$,

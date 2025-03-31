@@ -43,10 +43,10 @@ $$
 
 $$
     \begin{aligned}
-        &\text{Gaussian: } w_{ij} = \exp [-\frac{1}{2} (\frac{d_{ij}}{b})^2]  \\
+        &\text{Gaussian: } w_{ij} = \exp [-\frac{1}{2} (\frac{d_{ij} }{b})^2]  \\
         &\text{Exponential: } w_{ij} = \exp (\frac{|d_{ij}|}{b} ^2) \\
         &\text{Box-car: } w_{ij} = \begin{cases} 1 & d_{ij} \leq b \\ 0 & d_{ij} > b \end{cases}\\
-        &\text{Bi-square: } w_{ij} = \begin{cases} (1 - (\frac{d_{ij}}{b})^2)^2 & d_{ij} \leq b \\ 0 & d_{ij} > b \end{cases} \\
+        &\text{Bi-square: } w_{ij} = \begin{cases} (1 - (\frac{d_{ij} }{b})^2)^2 & d_{ij} \leq b \\ 0 & d_{ij} > b \end{cases} \\
     \end{aligned}
     \tag{3}
 $$
@@ -136,9 +136,9 @@ $$
 
 $$
     \begin{aligned}
-        w_{ij} &=\exp \{ - \frac{\lambda [(u_i - u_j)^2 + (v_i - v_j)^2] + \mu (t_i - t_j)^2}{h^2_{ST}} \} \\
-        & = \exp\{ - [\frac{(u_i - u_j)^2 + (v_i - v_j)^2 }{h^2_{S}} + \frac{(t_i - t_j)^2 }{h^2_{T}} ]\} \\
-        & = \exp\{ - \frac{d^S_{ij}}{h^2_{S}} \} \times \exp \{ \frac{d^T_{ij}}{h^2_{T}} \}  
+        w_{ij} &=\exp \{ - \frac{\lambda [(u_i - u_j)^2 + (v_i - v_j)^2] + \mu (t_i - t_j)^2}{h^2_{ST} } \} \\
+        & = \exp\{ - [\frac{(u_i - u_j)^2 + (v_i - v_j)^2 }{h^2_{S} } + \frac{(t_i - t_j)^2 }{h^2_{T} } ]\} \\
+        & = \exp\{ - \frac{d^S_{ij} }{h^2_{S} } \} \times \exp \{ \frac{d^T_{ij} }{h^2_{T} } \}  
         = w^S_{ij} \times w^T_{ij}
     \end{aligned}
     \tag{9}
@@ -147,7 +147,7 @@ $$
 更一般地可以表示为:
 
 $$
-    w_{i_{\langle S,T \rangle}}^{(t)} = k_S(d^S_{ij},b_S) \times k_T(d^T_{ij},b_T)
+    w_{i_{\langle S,T \rangle} }^{(t)} = k_S(d^S_{ij},b_S) \times k_T(d^T_{ij},b_T)
     \tag{10}
 $$
 
@@ -156,35 +156,35 @@ $$
 
 $$
     W_i = diag(
-        W_{i_{\langle S,T \rangle}}^{(t)},
-        W_{i_{\langle S,T \rangle}}^{(t-1)},
-        \ldots,W_{i_{\langle S,T \rangle}}^{(t-q)})
+        W_{i_{\langle S,T \rangle} }^{(t)},
+        W_{i_{\langle S,T \rangle} }^{(t-1)},
+        \ldots,W_{i_{\langle S,T \rangle} }^{(t-q)})
     \tag{11}
 $$
 
 $W_i$为分块矩阵，表示在空间上取$n$个数据点和在时间上去$q$取个时刻，其中:
 
 $$
-    W_{i_{\langle S,T \rangle}}^{(t)} = diag(
-        w^{t}_{i1_{\langle S,T \rangle}},
-        w^{t}_{i2_{\langle S,T \rangle}},
-        w^{t}_{i{n_t}_{\langle S,T \rangle}})
+    W_{i_{\langle S,T \rangle} }^{(t)} = diag(
+        w^{t}_{i1_{\langle S,T \rangle} },
+        w^{t}_{i2_{\langle S,T \rangle} },
+        w^{t}_{i{n_t}_{\langle S,T \rangle} })
     \tag{12}
 $$
 
-其中$w^{t}_{ij_{\langle S,T \rangle }}$是数据点在$t$时刻根据两点的时空距离得到。
+其中$w^{t}_{ij_{\langle S,T \rangle } }$是数据点在$t$时刻根据两点的时空距离得到。
 
 进一步地可使用交叉验证的方式来确定最佳带宽参数$b_S$和$b_T$:
 
 $$
-    CV(b_S,b_T) = \sqrt{\sum_{i=1}^{n}\frac{(y_i - \hat{y}^{(-i)}(b_S,b_T))^2}{n}}
+    CV(b_S,b_T) = \sqrt{\sum_{i=1}^{n}\frac{(y_i - \hat{y}^{(-i)}(b_S,b_T))^2}{n} }
     \tag{13}
 $$
 
 将时间异质性纳入模型，其具体为:
 
 $$
-    CV(b_{St},b_{S(t-1)},\ldots,b_{S(t-q)},b_T) = \\\sqrt{\sum_{i=1}^{n}\frac{(y_i - \hat{y}^{(-i)}(b_{St},b_{S(t-1)},\ldots,b_{S(t-q)},b_T))^2}{n}}
+    CV(b_{St},b_{S(t-1)},\ldots,b_{S(t-q)},b_T) = \\\sqrt{\sum_{i=1}^{n}\frac{(y_i - \hat{y}^{(-i)}(b_{St},b_{S(t-1)},\ldots,b_{S(t-q)},b_T))^2}{n} }
     \tag{14}
 $$
 
@@ -288,7 +288,7 @@ $$
 从而将原先的$\beta$估计方法式(4)中的损失函数修改修改为:
 
 $$
-    L_i(h) = \sum_{i =1}^{n} \rho_t (Y_i - \tilde{X_i}^T \theta^\tau (u_0,v_o)) \cdot K(\frac{d_{ij}}{h})
+    L_i(h) = \sum_{i =1}^{n} \rho_t (Y_i - \tilde{X_i}^T \theta^\tau (u_0,v_o)) \cdot K(\frac{d_{ij} }{h})
     \tag{22}
 $$
 

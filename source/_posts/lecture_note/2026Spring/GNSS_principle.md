@@ -618,7 +618,7 @@ use Taylor series with respect to the approximate position and gredient descent.
 UERE is the overall error budget: 
 
 $$
-\sigma_{\text{UERE}} = \sqrt{\sigma^2_{\text{sc}} + \sigma^2_{\text{eph}} + \sigma^2_{\text{iono}} + \sigma^2_{\text{trop}} + \sigma^2_{\text{mp}} + \sigma^2_{\text{rc}} + \sigma^2_{\text{noise}}}
+\sigma_{\text{UERE} } = \sqrt{\sigma^2_{\text{sc} } + \sigma^2_{\text{eph} } + \sigma^2_{\text{iono} } + \sigma^2_{\text{trop} } + \sigma^2_{\text{mp} } + \sigma^2_{\text{rc} } + \sigma^2_{\text{noise} }}
 $$
 
 this measurement error is mapped onto the position error by the receiver-satellite geometry.
