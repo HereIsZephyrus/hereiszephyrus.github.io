@@ -331,8 +331,10 @@ For static applications, the gain is limited as for as possivle to the upper hem
 
 # Observables
 
-**Satellite navigation uses the "one-way concept"**The satellite navigation ovservables are ranges which are deduced from measured time or phase differences based on a comparison between received signals and receiver-generated signals.
+**Satellite navigation uses the "one-way concept"** The satellite navigation ovservables are ranges which are deduced from measured time or phase differences based on a comparison between received signals and receiver-generated signals.
 consequently, they are denoted as `pseudorange`
+
+> Three observation types: pseudorange, phase, dopler's effect
 
 ## Code pseudoranges
 
@@ -367,3 +369,279 @@ hence:
 $$
 \phi_r^s(t) = \phi^s(t) - \phi_r(t) = -f^s \frac Q c + f^s \delta^s - f_r\delta_r + (f^s - f_r)t
 $$
+
+## Biases and noise
+
+**Doppler measurements are affected by the bias rates only.**
+
+### Error sources
+
+- satellite-related errors
+- propagation-medium-related errors
+- receiver-related errors
+
+### Differencing
+
+- Differencing measurements of *two receivers to the same satallite* eliminates satellite-specific biases.
+- Differencing *bewteen two satellites to the same receivers* eliminates reciever-specific biases.
+- Differencing *between epochs*.
+
+> 在GPS测量中，每⼀瞬间要对多颗卫星进⾏观测，因⽽在每颗卫星的载波相位测量观测值中，所受到的接收机振荡器的随机误差的影响是相同的
+
+> double-difference pseudoranges are free of systematic erroes originating from the satellites and from the receivers.
+
+with respect to refraction, this is only true for **short baselines** where the measured ranges at both enpoint are affected equally.
+
+### User equivalent range error
+
+The `UERE` is obtained: Extending the URE by the user equipment and environmental errors.
+
+The UERE is computed as square root of the summed squares of the six error constituents ephemerides data, satellite clock, ionosphere, troposhpere, multipath, and reciver measurement.
+
+### Ionospheric refraction
+
+**Ionospheric refaction is frequency depended. (Dispersion)**
+
+$$
+\frac{\sin \beta_i}{\sin \beta_r} = \frac{n_2}{n_1} = \text{constant}
+$$
+
+The true distance is: 
+
+$$
+\begin{aligned}
+S &= \int_{\Delta t}v_G dt = \int_{\Delta t}c(1 - 40.28N_ef^{-2})dt \\
+&= c \cdot \Delta t - c \frac{40.28}{f^2}\int_{s'}N_e dS \\
+&= \rho - c \frac{40.28}{f^2}\int_{S'}N_e dS = \rho + d_{ion}
+\end{aligned}
+$$
+
+> The ionosphere is a dispersive medium at 1.5GHz, while the troposhere is not.
+
+Because: 
+$$
+\begin{cases}
+\text{Parse refractive index:}n_{ph} = 1 + \frac{c_2}{f^2} \\
+\text{Group refractive index:}n_{gr} = 1 - \frac{c_2}{f^2}
+\end{cases}
+,(c_2 = -40.3N_e[Hz^2])
+$$
+
+GNSS ranging codes are delayed and the carrier phases are advanced: 
+
+$$
+\begin{cases}
+TEC &= \int N_e d s_0 \\
+\Delta^{Iono}_{ph} &= -\frac{40.3}{f^2} TEC \\
+\Delta^{Iono}_{gr} &= \frac{40.3}{f^2} TEC
+\end{cases}
+$$
+
+Since the baseline between satellite and observation is not vertical with the Ionosphere. So $TEC = \frac{1}{\cos z'}TVEC$, which $z'$ is zenith angle, calcuated by equation of single-layer model: $\sin z'=\frac{R_e}{R_e + h_m}\sin z_0$ ($h_m$ is the ionospheric point's height). 
+
+Consider the two different frequency signal broadcast by one satellite, the estimation are: 
+
+$$
+\begin{cases}
+\lambda_1 \Phi_1 &= \rho + c \Delta \delta + \lambda_1 N_1 - \Delta^{Iono}_1 \\
+\lambda_2 \Phi_2 &= \rho + c \Delta \delta + \lambda_2 N_2 - \Delta^{Iono}_2 \\
+\end{cases}
+$$
+
+Because $\lambda = ct = \frac c f$, the above are: 
+
+$$
+\begin{cases}
+\Phi_1 &= \frac{f_1}{c}\rho + f_1 \Delta \delta + N_1 - \frac{f_1}{c} \Delta_1^{Iono} \\
+\Phi_2 &= \frac{f_2}{c}\rho + f_2 \Delta \delta + N_2 - \frac{f_2}{c} \Delta_2^{Iono}
+\end{cases}
+$$
+
+Because the property of Ionoshere: 
+
+$$
+\frac{f^2}{c}\Delta^{Iono} = \frac{1}{c} \frac{40.3}{\cos z'}TVEC
+$$
+
+Which means: 
+
+$$
+\frac{f_1^2}{c}\Delta_1^{Iono} = \frac{f_2^2}{c}\Delta_2^{Iono} = \frac{1}{c} \frac{40.3}{\cos z'}TVEC
+$$
+
+Multify $f_1$ and $f_2$ for the two equations and substrct: 
+
+$$
+\Phi_1f_1 - \Phi_2f_2 = (\frac{\rho}{c} + \Delta \delta)(f_1^2 - f_2^2) + N_1f_1 - N_2 f_2
+$$
+
+By this way the bias raised by ionoshpere are eliminated.
+
+The observation equation is: 
+
+$$
+\begin{aligned}
+(\Phi_1 - \frac{f_2}{f_1}\Phi_2) \frac{f_1^2}{f_1^2 - f_2^2} &= (\frac{\rho}{c} + \Delta \delta)f_1 + (N_1 - N_2 \frac{f_2}{f_1})\frac{f_1^2}{f_1^2 - f_2^2} \Longrightarrow\\
+(\Phi_1 - k\Phi_2) \frac{1}{1 - k^2} &= (\frac{\rho}{c} + \Delta \delta)f_1 + (N_1 - kN_2)\frac{1}{1-k^2}
+\end{aligned}
+$$
+
+or consider pseudoranges: 
+
+$$
+\begin{cases}
+R_1 &= \rho + c \Delta \delta + \Delta^{Iono}_1 \\
+R_2 &= \rho + c \Delta \delta + \Delta^{Iono}_2
+\end{cases}
+$$
+
+then multify $\frac{f^2}{c}$: 
+
+$$
+\begin{cases}
+R_1 \frac{f_1^2}{c} &= \rho \frac{f_1^2}{c} + c \Delta \delta \frac{f_1^2}{c} + \Delta^{Iono}_1 \frac{f_1^2}{c}\\
+R_2 \frac{f_2^2}{c} &= \rho \frac{f_2^2}{c} + c \Delta \delta \frac{f_2^2}{c} + \Delta^{Iono}_2 \frac{f_2^2}{c}
+\end{cases}
+$$
+
+$$
+(R_1 - \frac{f_2^2}{f_1^2}R_2) \frac{f_1^2}{f_1^2 - f_2^2} = \rho + \Delta \delta
+$$
+
+### Troposheric refraction
+
+`Troposhere` neutral atmoshpere (the noninized part)
+
+> extends from the earth's surface to about 50km height
+
+a `nondispersive` medium with respect to radio waves up to frequencies of 15 GHz. (*propagation is frequency independent*, so an elimination of troposheric refraction by dual-frequency methods is impossible)
+
+#### Troposphere delay
+
+consists of a **dry**(90% delay, mainly a function of pressure) and **wet**(water vapor, high variability) component.
+
+(many magic models to solve this)
+
+### Receiver
+
+`RINEX` The Receiver Independent Exchange Format
+
+`cut-off angle` only receive the satellites whose zenith angle is above cut-off angle.
+
+# Navigation
+
+## Point positioning
+
+$n_s$ denotes the number of satellites and $n_t$ the number of epochs.
+
+### Static point positioning
+
+the three coordinates of the observing site and the reciver clock bias for each observation epoch are unknown. This, the number of unkowns is $3+n_t$
+
+$$
+n_s n_t \geq 3 + n_t
+$$
+
+so the minimum number of satellites to get a solution is $n_s = 2$, leading to $n_t \geq 3$ observation epochs.Which means for $n_s = 4$, the solution $n_t \geq 1$ is obtained.
+
+### kinematic point positioning
+
+Due to the motion of the receiver, the number of the unkown station coordinates is $3n_t$.Need to add the $n_t$ unknown receiver clock biases. 
+
+$$
+n_s n_t \geq 4n_t
+$$
+
+### Precise point positioning(PPP)
+
+The main limiting factors with respect to the achievable accuracy are: 
+
+1. the orbit errors
+2. the clock errors
+3. the atmosperic influences(ionospheric and tropospheric refraction)
+
+PPP: 
+- accurate orbital data
+- accurate satellite clock data
+- dual-frequency code pseudoranges and carrier phase observations
+- The preferred model is based on an ionosphere-free combination of code pseudoranges and carrier phases as well
+
+#### model refinements
+
+Additional terms are necessary to account for: 
+
+- the Sagnac effect
+- the solid earth tides
+- the ocean loading
+- the atmoshperic loading(caused by the atmospheric pressure variation)
+- polar motion, earth orientation effects, crustal motion and other deformation effects
+- the antenna phase center offset
+- antenna phase wind-up error
+
+**Choose a proper weighting of the obervations.**(e.g. near the horizon get a lower weight)
+
+### Linearization
+
+$$
+\begin{aligned}
+\rho_r^s &= \sqrt{(X^s(t)-X_{r0})^2 + (Y^s(t)-Y_{r0})^2 + (Z^s(t)-Z_{r0})^2}\\
+&= f(X_{r0},Y_{r0},Z_{r0})
+\end{aligned}
+$$
+
+and
+
+$$
+\begin{cases}
+X_r &= X_{r0} + \Delta X_r \\
+Y_r &= Y_{r0} + \Delta Y_r \\
+Z_r &= Z_{r0} + \Delta Z_r \\
+\end{cases}
+$$
+
+use Taylor series with respect to the approximate position and gredient descent.
+
+### user equivalent range error
+
+UERE is the overall error budget: 
+
+$$
+\sigma_{\text{UERE}} = \sqrt{\sigma^2_{\text{sc}} + \sigma^2_{\text{eph}} + \sigma^2_{\text{iono}} + \sigma^2_{\text{trop}} + \sigma^2_{\text{mp}} + \sigma^2_{\text{rc}} + \sigma^2_{\text{noise}}}
+$$
+
+this measurement error is mapped onto the position error by the receiver-satellite geometry.
+
+#### Dilution of precision(DOP)
+
+**Geometry impact**: 
+a good geometry ensure a good precision.
+
+Visibility thereby is characterized by the unobstructed line of sight between receiver and satellite.
+
+The geometry changes with time duet to the relative motion of the user and satellites.
+
+**A measure of the instananeous geometry is the DOP factor**
+
+The determinant if proportional to the scalar triple product$((\rho_r^4 - \rho_r^1),(\rho_r^3,\rho_r^1),(\rho_r^2 - \rho_r^1))$, which can geometrically be interpreted by the volume of a tetrahedron. And **the larger the volume of this body, the better the satellite geometry**, since good geometry should mirror a low DOP value.
+
+Generally, to estimate the accuracy of point positioning  precision: 
+
+$$
+m = URA \cdot xDOP
+$$
+
+#### Calc DOP
+
+$$
+Q_X = (A^\intercal P A)^{-1}
+$$
+
+Capital X is used here as an indication of coordinates of an ECEF system. The cofactor matrix $Q_X$ is a $4 \times 4$ matrix, where three components are contributed by the site position X, Y, Z and one compoenet by the receiver clock.
+
+transfer global cofactoe matrix $Q_X$ must be transformed into local cofactor matrix $Q_X$ by the law of covariance propagation. 
+
+$$
+Q_X = R Q_X R^\intercal
+$$
+
+i.e. convert $(x,y,z)$ into $(n,e,u)$. 
