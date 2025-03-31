@@ -121,6 +121,15 @@ theme : butterfly
 #  repo: git@github.com:HereIsZephyrus/hereiszephyrus.github.io.git
 #  branch: main
 
+kramed:
+  gfm: true
+  pedantic: false
+  sanitize: false
+  tables: true
+  breaks: true
+  smartLists: true
+  smartypants: true
+  
 marked:
   gfm: true
   pedantic: false

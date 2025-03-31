@@ -5,7 +5,6 @@ tags:
   - lecture
   - RS
 title: GNSS原理及其应用笔记
-mathjax: true
 description: GNSS原理及其应用课程笔记(更新中)
 abbrlink: d82f29f9
 date: 2025-03-17 00:00:00

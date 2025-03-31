@@ -14,7 +14,7 @@
   "dependencies": {
     "@neilsustc/markdown-it-katex": "^1.0.0",
     "axios": "^1.7.7",
-    "body-parser": "^2.2.0",
+    "body-parser": "^1.20.2",
     "cheerio": "^1.0.0",
     "d3": "^7.9.0",
     "graphql": "^16.8.1",
@@ -36,16 +36,17 @@
     "hexo-renderer-kramed": "^0.1.4",
     "hexo-renderer-less": "^4.0.0",
     "hexo-renderer-markdown-it": "^7.1.1",
+    "hexo-renderer-mathjax": "^0.6.0",
     "hexo-renderer-pandoc": "^0.4.0",
     "hexo-renderer-pug": "^3.0.0",
     "hexo-renderer-stylus": "^3.0.1",
     "hexo-server": "^3.0.0",
-    "hexo-theme-async": "^2.2.5",
-    "hexo-theme-butterfly": "^5.3.5",
-    "hexo-theme-landscape": "^1.1.0",
+    "hexo-theme-async": "^2.2.2",
+    "hexo-theme-butterfly": "^4.13.0",
+    "hexo-theme-landscape": "^1.0.0",
     "mongodb": "^6.8.0",
     "request": "^2.88.2",
-    "webpack": "^5.97.1",
+    "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4"
   }
 }
