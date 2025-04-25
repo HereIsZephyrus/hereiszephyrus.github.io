@@ -8,6 +8,7 @@ title: GNSS原理及其应用笔记
 description: GNSS原理及其应用课程笔记
 abbrlink: d82f29f9
 date: 2025-03-17 00:00:00
+mathjax: true
 ---
 # GNSS原理及其应用
 `GNSS三大作用` 定位(Positioning),导航(Navigation),授时(Timing)
