@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@neilsustc/markdown-it-katex": "^1.0.0",
-    "axios": "^1.7.7",
+    "axios": "^1.9.0",
     "body-parser": "^2.2.0",
     "cheerio": "^1.0.0",
     "d3": "^7.9.0",
