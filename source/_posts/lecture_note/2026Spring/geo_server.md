@@ -6,8 +6,9 @@ tags:
   - RS
 title: 地理空间信息服务
 description: 地理空间信息服务(更新中)
-date: 2025-04-30 00:00:00
 mathjax: true
+abbrlink: 3514d624
+date: 2025-04-30 00:00:00
 ---
 
 # 引言
