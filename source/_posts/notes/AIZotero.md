@@ -7,9 +7,6 @@ tags:
   - Workflow
   - Zotero
 title: 从文献库到知识管家—AI赋能Zotero一站式文献知识管理
-id: 1ef5f278-d14b-80ae-9925-f26f585af073
-created: 2025-05-10 06:20:00
-updated: 2025-05-10 06:59:00
 date: 2025-05-10 06:20:00
 ---
 
