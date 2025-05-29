@@ -1,3 +1,14 @@
+---
+categories:
+  - Blog
+tags:
+  - Note
+  - QGIS C++
+title: 使用CMake 配置 Windows QGIS开发环境笔记
+mathjax: true
+description: 建议是首先别碰Windows，其次还是别碰C++了，QGIS就该用Python
+date: 2025-03-29 18:00:00
+---
 # 使用CMake 配置 Windows QGIS开发环境
 
 > 因为要项目协作想着用CMake组织一下吧这样分发源码就很方便了，然后开启了我痛苦的三天...在Windows上配置开发环境实在太痛苦了😭
