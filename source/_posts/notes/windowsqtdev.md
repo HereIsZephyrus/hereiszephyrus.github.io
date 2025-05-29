@@ -18,15 +18,15 @@ date: 2025-03-29 18:00:00
 1. 下载OSGeo4W
 2. 在OSGeo4W中下载QGIS(QGIS还有dev,ltr-dev等版本可自由选择)以及Qt开发工具qt5-devel,qt5-libs,qt5-tools,qt5-libs-symbols
 3. 打开系统环境变量配置：
-    1. OSGEO4W_ROOT=C:\OSGeo4W
-    2. Qt5_DIR=\$OSGEO4W_ROOT\$\apps\Qt5
+    1. OSGEO4W_ROOT=C:\\OSGeo4W
+    2. Qt5_DIR=\\$OSGEO4W_ROOT\$\\apps\\Qt5
 4. 在系统环境变量PATH中添加配置：
-    1. \$Qt5_DIR\$\bin
-    2. \$OSGEO4W_ROOT\$\bin
-    3. \$OSGEO4W_ROOT\$\apps\qgis\bin
+    1. \$Qt5_DIR\$\\bin
+    2. \$OSGEO4W_ROOT\$\\bin
+    3. \$OSGEO4W_ROOT\$\\apps\\qgis\\bin
     > 类似的一些库如gdal-dev等也需要如此配置。
 5. 找到QGIS下的FindQGIS.cmake文件，将其添加到当前的CMAKE_MODULE_PATH中。
-6. 将OSGEO4W_ROOT\bin下的文件**复制**到\OSGEO4W_ROOT\apps\qgis\bin中(建议先备份bin)。
+6. 将OSGEO4W_ROOT\\bin下的文件**复制**到\\OSGEO4W_ROOT\\apps\\qgis\\bin中(建议先备份bin)。
 6. **使用MSVC**构建CMakeLists
 
 如果想启用编译器的编译提示，可以把对应的头文件加载到IDE的搜索路径中(如VScode就是C/C++ Extension的include dir)
