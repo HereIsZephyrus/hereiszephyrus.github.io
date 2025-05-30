@@ -5,7 +5,7 @@ tags:
   - Note
   - QGIS C++
 title: 使用CMake 配置 Windows QGIS开发环境笔记
-mathjax: true
+mathjax: false
 description: 建议是首先别碰Windows，其次还是别碰C++了，QGIS就该用Python
 date: 2025-05-29 18:00:00
 ---
@@ -19,12 +19,12 @@ date: 2025-05-29 18:00:00
 2. 在OSGeo4W中下载QGIS(QGIS还有dev,ltr-dev等版本可自由选择)以及Qt开发工具qt5-devel,qt5-libs,qt5-tools,qt5-libs-symbols
 3. 打开系统环境变量配置：
     1. OSGEO4W_ROOT=C:\\OSGeo4W
-    2. Qt5_DIR={OSGEO4W_ROOT}\\apps\\Qt5
+    2. Qt5_DIR=\$OSGEO4W_ROOT\$\\apps\\Qt5
 4. 在系统环境变量PATH中添加配置：
-    1. {Qt5_DIR}\\bin
-    2. {OSGEO4W_ROOT}\\bin
-    3. }OSGEO4W_ROOT}\\apps\\qgis\\bin
-    > 类似的一些库如gdal-dev等也需要如此配置。
+    1. \$Qt5_DIR\$\\bin
+    2. \$OSGEO4W_ROOT\$\\bin
+    3. \$OSGEO4W_ROOT\$\\apps\\qgis\\bin
+    类似的一些库如gdal-dev等也需要如此配置。
 5. 找到QGIS下的FindQGIS.cmake文件，将其添加到当前的CMAKE_MODULE_PATH中。
 6. 将OSGEO4W_ROOT\\bin下的文件**复制**到\\OSGEO4W_ROOT\\apps\\qgis\\bin中(建议先备份bin)。
 6. **使用MSVC**构建CMakeLists
@@ -41,7 +41,7 @@ date: 2025-05-29 18:00:00
 4. **Q: 提示找不到qt5-qca.dll/qt5-webkit.dll/qt5-keychain等错误如何解决**
 这个问题的来源是Qt依赖的更新。在qt5.6之后的版本默认不包含这些库，因此大家使用的qt5.15.2等版本是默认不包含这些库的，因此需要配置PATH能够找到OSGeo4W下的qt5
 5. **Q: 提示entry point not found XX in qgis_core.dll如何解决**
-这个问题到根源在于如OSGeo4W使用的部分库与其他软件使用的库版本不兼容，如JAVA默认的zip库就无法在OSGeo4W的qgiscore中使用，因此需要提高OSGeo4W中库的优先级。当然这可能导致其他软件的环境出错，为什么要把OSGEO4W_ROOT\bin复制到qgis\bin下。(或者一些土方法是把对应的dll移到当前文件目录下)
+这个问题到根源在于如OSGeo4W使用的部分库与其他软件使用的库版本不兼容，如JAVA默认的zip库就无法在OSGeo4W的qgiscore中使用，因此需要提高OSGeo4W中库的优先级。当然这可能导致其他软件的环境出错，为什么要把OSGEO4W_ROOT\\bin复制到qgis\\bin下。(或者一些土方法是把对应的dll移到当前文件目录下)
 6. **Q: QGIS提示Application PATH not found如何解决**
 在使用QgsApplication等函数前记得配置prefix，详见文档。
 7. **Q: 我可以使用qt6构建QGIS项目吗？**
