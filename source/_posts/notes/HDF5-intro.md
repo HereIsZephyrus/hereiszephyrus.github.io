@@ -112,11 +112,13 @@ HDF5由三个主要部分组成：
 
 ## 构建HDF5应用程序
 当构建HDF5库时，会包含以下编译Shell脚本：
+
 | 脚本名称 | 功能描述 |
 |----------|----------|
 | h5cc | 基于pkg-config的HDF5 C程序编译脚本 |
 | h5fc | 基于pkg-config的HDF5 Fortran 90程序编译脚本 |
 | h5c++ | 基于pkg-config的HDF5 C++程序编译脚本 |
+
 官方推荐使用CMake。而且HDF5的[代码仓库](https://github.com/HDFGroup/hdf5)已经发出公告，即将将打包方式仅统一到CMake，在2025年3月10日以后官方停止使用除CMake之外的打包工具。以下提供命令行的实现，当然也可以使用CMake-GUI或VS的编译工具。
 
 > Heads Up: HDF5 Drops Autotools March 10th
