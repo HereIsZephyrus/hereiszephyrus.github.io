@@ -15,7 +15,7 @@ date: 2025-07-17 14:29:00
 
 [HDF5官方文档](https://support.hdfgroup.org/documentation/hdf5/latest/index.html)
 
-<u>截止2025年7月HDF5的最新版本是1.15.6, 2.0.0版本不期将发布注意甄别内容时效。</u>
+<u>截止2025年7月HDF5的最新版本是1.14.6, 2.0.0版本不期将发布注意甄别内容时效。</u>
 
 本文使用的样例代码托管在[HDF5-OpenMP-CDemo](https://github.com/geoinformation-wuhan/HDF5-OpenMP-CDemo)
 
